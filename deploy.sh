@@ -9,6 +9,9 @@ yarn build
 # cd 到构建输出的目录下
 cd dist
 
+git config --global user.email "2443992009@qq.com"
+git config --global user.name "hefeng6500"
+
 git init
 git add -A
 git commit -m 'deploy'
