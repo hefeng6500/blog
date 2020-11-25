@@ -24,7 +24,7 @@ const getClientRender = (args: { hot?: boolean; routes?: any[] } = {}) => plugin
         history: createHistory(args.hot),
         isServer: process.env.__IS_SERVER,
         rootElement: 'root',
-        defaultTitle: `Site Name`,
+        defaultTitle: `hefeng6500 的博客`,
       },
     });
     return renderClient(opts);

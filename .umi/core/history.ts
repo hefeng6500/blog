@@ -2,7 +2,7 @@
 import { createBrowserHistory } from 'C:/workplace/dumi-doc/node_modules/_@umijs_runtime@3.2.24@@umijs/runtime';
 
 let options = {
-  "basename": "/"
+  "basename": "/blog/"
 };
 if ((<any>window).routerBase) {
   options.basename = (<any>window).routerBase;
