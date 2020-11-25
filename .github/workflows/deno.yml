@@ -35,13 +35,14 @@ jobs:
         yarn
         yarn build
 
-    - name: Deploy
-      uses: Jameslves/github-pages-deploy-action@3.7.1
-      with:
-        ACCESS_TOKEN: ${{ secrets.DEPLOY_KEY }}
-        FOLDER: dist
-        REPOSITORY_NAME: hefeng6500/hefeng6500.github.io
-        BRANCH: main
+    - name: Deploy # 将打包内容发布到 github page
+        uses: JamesIves/github-pages-deploy-action@latest # 使用别人写好的 actions
+        with:  # 自定义环境变量
+          ACCESS_TOKEN: ${{ secrets.VUE_ADMIN_TEMPLATE }} # VUE_ADMIN_TEMPLATE 是我的 secret 名称，需要替换成你的
+          BRANCH: main
+          FOLDER: dist
+          REPOSITORY_NAME: hefeng6500/hefeng6500.github.io # 这是我的 github page 仓库
+          TARGET_FOLDER: blog # 打包的文件将放到静态服务器 github-actions-demo 目录下
 
       env:
         CI: true
