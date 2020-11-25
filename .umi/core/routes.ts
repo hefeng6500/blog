@@ -9,7 +9,7 @@ export function getRoutes() {
   {
     "path": "/",
     "component": (props) => require('react').createElement(require('../../node_modules/_@umijs_preset-dumi@1.0.34@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"*":{"/getting-started":[{"path":"/getting-started","title":"快速上手","meta":{}}],"*":[{"path":"/","title":"Hello dumi!","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"快速上手","order":1,"path":"/getting-started"},{"path":"/interview","title":"Interview"}]},"title":"Site Name","mode":"site"},
+      ...{"base": "/blog","menus":{"*":{"/getting-started":[{"path":"/getting-started","title":"快速上手","meta":{}}],"*":[{"path":"/","title":"Hello dumi!","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"快速上手","order":1,"path":"/getting-started"},{"path":"/interview","title":"Interview"}]},"title":"Site Name","mode":"site"},
       ...props,
     }),
     "routes": [
