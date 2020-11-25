@@ -9,7 +9,7 @@ export function getRoutes() {
   {
     "path": "/",
     "component": (props) => require('react').createElement(require('../../node_modules/_@umijs_preset-dumi@1.0.34@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"*":{"/getting-started":[{"path":"/getting-started","title":"快速上手","meta":{}}],"*":[{"path":"/","title":"Index","meta":{}}],"/design-patterns":[{"path":"/design-patterns","title":"设计模式","meta":{}},{"path":"/design-patterns/adapter-mode","title":"适配器模式","meta":{}},{"path":"/design-patterns/decorator-mode","title":"装饰器模式","meta":{}},{"path":"/design-patterns/factory-mode","title":"简单工厂模式","meta":{}},{"path":"/design-patterns/observer-mode","title":"观察者模式","meta":{}},{"path":"/design-patterns/prototype-mode","title":"原型模式","meta":{}},{"path":"/design-patterns/publish-subscribe-mode","title":"发布订阅模式","meta":{}},{"path":"/design-patterns/singleton-mode","title":"单例模式","meta":{}},{"path":"/design-patterns/strategy-mode","title":"策略模式","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}],"/javascript":[{"path":"/javascript/higher-order function","title":"高阶函数","meta":{}},{"path":"/javascript/prototype","title":"原型、原型链和继承","meta":{}}],"/performance":[{"path":"/performance","title":"性能优化总括","meta":{}},{"path":"/performance/time-slice","title":"如何高性能的渲染十万条数据(虚拟列表)","meta":{}}],"/react":[{"path":"/react","title":"React 进阶","meta":{}}],"/vue":[{"path":"/vue/virtual-dom","title":"虚拟 DOM","meta":{}},{"path":"/vue/vue-i18n","title":"vue-i18n","meta":{}},{"path":"/vue/vue3","title":"vue3-app","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"快速上手","order":1,"path":"/getting-started"},{"path":"/vue","title":"Vue"},{"path":"/react","title":"React"},{"path":"/interview","title":"面试题"},{"path":"/javascript","title":"Javascript"},{"title":"性能优化","path":"/performance"},{"path":"/design-patterns","title":"设计模式"}]},"title":"hefeng6500 的博客","desc":"hefeng6500 的博客","mode":"site"},
+      ...{"menus":{"*":{"/getting-started":[{"path":"/getting-started","title":"快速上手","meta":{}}],"*":[{"path":"/","title":"Index","meta":{}}],"/design-patterns":[{"path":"/design-patterns","title":"设计模式","meta":{}},{"path":"/design-patterns/adapter-mode","title":"适配器模式","meta":{}},{"path":"/design-patterns/decorator-mode","title":"装饰器模式","meta":{}},{"path":"/design-patterns/factory-mode","title":"简单工厂模式","meta":{}},{"path":"/design-patterns/observer-mode","title":"观察者模式","meta":{}},{"path":"/design-patterns/prototype-mode","title":"原型模式","meta":{}},{"path":"/design-patterns/publish-subscribe-mode","title":"发布订阅模式","meta":{}},{"path":"/design-patterns/singleton-mode","title":"单例模式","meta":{}},{"path":"/design-patterns/strategy-mode","title":"策略模式","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}],"/javascript":[{"path":"/javascript/higher-order function","title":"高阶函数","meta":{}},{"path":"/javascript/prototype","title":"原型、原型链和继承","meta":{}}],"/performance":[{"path":"/performance","title":"性能优化总括","meta":{}},{"path":"/performance/time-slice","title":"如何高性能的渲染十万条数据(时间分片)","meta":{}},{"path":"/performance/virtual-scroll","title":"如何高性能的渲染十万条数据(虚拟列表)","meta":{}}],"/react":[{"path":"/react","title":"React 进阶","meta":{}},{"path":"/react/react-source","title":"React 源码","meta":{}}],"/vue":[{"path":"/vue/virtual-dom","title":"虚拟 DOM","meta":{}},{"path":"/vue/vue-i18n","title":"vue-i18n","meta":{}},{"path":"/vue/vue3","title":"vue3-app","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"快速上手","order":1,"path":"/getting-started"},{"path":"/vue","title":"Vue"},{"path":"/react","title":"React"},{"path":"/interview","title":"面试题"},{"path":"/javascript","title":"Javascript"},{"title":"性能优化","path":"/performance"},{"path":"/design-patterns","title":"设计模式"}]},"title":"hefeng6500 的博客","desc":"hefeng6500 的博客","mode":"site"},
       ...props,
     }),
     "routes": [
@@ -509,6 +509,68 @@ export function getRoutes() {
           "slugs": [
             {
               "depth": 1,
+              "value": "如何高性能的渲染十万条数据(时间分片)",
+              "heading": "如何高性能的渲染十万条数据时间分片"
+            },
+            {
+              "depth": 2,
+              "value": "前言",
+              "heading": "前言"
+            },
+            {
+              "depth": 2,
+              "value": "最粗暴的做法（一次性渲染）",
+              "heading": "最粗暴的做法（一次性渲染）"
+            },
+            {
+              "depth": 2,
+              "value": "使用定时器",
+              "heading": "使用定时器"
+            },
+            {
+              "depth": 3,
+              "value": "为什么会出现闪屏现象呢",
+              "heading": "为什么会出现闪屏现象呢"
+            },
+            {
+              "depth": 3,
+              "value": "简单聊一下 setTimeout 和闪屏现象",
+              "heading": "简单聊一下-settimeout-和闪屏现象"
+            },
+            {
+              "depth": 2,
+              "value": "使用 requestAnimationFrame",
+              "heading": "使用-requestanimationframe"
+            },
+            {
+              "depth": 2,
+              "value": "使用 DocumentFragment",
+              "heading": "使用-documentfragment"
+            },
+            {
+              "depth": 2,
+              "value": "参考",
+              "heading": "参考"
+            }
+          ],
+          "title": "如何高性能的渲染十万条数据(时间分片)",
+          "nav": {
+            "path": "/performance",
+            "title": "性能优化"
+          }
+        },
+        "title": "如何高性能的渲染十万条数据(时间分片)"
+      },
+      {
+        "path": "/performance/virtual-scroll",
+        "component": require('../../docs/performance/virtual-scroll.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/performance/virtual-scroll.md",
+          "updatedTime": 1606346735028,
+          "slugs": [
+            {
+              "depth": 1,
               "value": "如何高性能的渲染十万条数据(虚拟列表)",
               "heading": "如何高性能的渲染十万条数据虚拟列表"
             },
@@ -567,7 +629,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/React/index.md",
-          "updatedTime": 1606315224000,
+          "updatedTime": 1606345851000,
           "slugs": [
             {
               "depth": 1,
@@ -727,6 +789,88 @@ export function getRoutes() {
           }
         },
         "title": "React 进阶"
+      },
+      {
+        "path": "/react/react-source",
+        "component": require('../../docs/React/react-source.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/React/react-source.md",
+          "updatedTime": 1606348423740,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "React 源码",
+              "heading": "react-源码"
+            },
+            {
+              "depth": 2,
+              "value": "Day01",
+              "heading": "day01"
+            },
+            {
+              "depth": 3,
+              "value": "实现 createElement()",
+              "heading": "实现-createelement"
+            },
+            {
+              "depth": 3,
+              "value": "实现 createDOM()、render()",
+              "heading": "实现-createdom、render"
+            },
+            {
+              "depth": 4,
+              "value": "前置知识",
+              "heading": "前置知识"
+            },
+            {
+              "depth": 4,
+              "value": "createDOM()、render() 源码实现",
+              "heading": "createdom、render-源码实现"
+            },
+            {
+              "depth": 2,
+              "value": "Day02",
+              "heading": "day02"
+            },
+            {
+              "depth": 3,
+              "value": "实现合成事件",
+              "heading": "实现合成事件"
+            },
+            {
+              "depth": 3,
+              "value": "实现 setState()",
+              "heading": "实现-setstate"
+            },
+            {
+              "depth": 4,
+              "value": "同步更新",
+              "heading": "同步更新"
+            },
+            {
+              "depth": 4,
+              "value": "异步更新",
+              "heading": "异步更新"
+            },
+            {
+              "depth": 3,
+              "value": "实现createRef()",
+              "heading": "实现createref"
+            },
+            {
+              "depth": 3,
+              "value": "实现生命周期函数",
+              "heading": "实现生命周期函数"
+            }
+          ],
+          "title": "React 源码",
+          "nav": {
+            "path": "/react",
+            "title": "React"
+          }
+        },
+        "title": "React 源码"
       },
       {
         "path": "/vue/virtual-dom",

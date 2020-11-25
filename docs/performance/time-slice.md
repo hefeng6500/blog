@@ -1,426 +1,237 @@
-# 如何高性能的渲染十万条数据(虚拟列表)
+# 如何高性能的渲染十万条数据(时间分片)
 
-[摘录 github @chenqf](https://github.com/chenqf/frontEndBlog/issues/16)
+[摘录 github @chenqf](https://github.com/chenqf/frontEndBlog/issues/15)
 
 ## 前言
 
-在工作中，有时会遇到需要一些不能使用分页方式来加载列表数据的业务情况，对于此，我们称这种列表叫做`长列表`。比如，在一些外汇交易系统中，前端会实时的展示用户的持仓情况(收益、亏损、手数等)，此时对于用户的持仓列表一般是不能分页的。
+在实际工作中，我们很少会遇到一次性需要向页面中插入大量数据的情况，但是为了丰富我们的知识体系，我们有必要了解并清楚当遇到大量数据时，如何才能在不卡主页面的情况下渲染数据，以及其中背后的原理。
 
-在[高性能渲染十万条数据(时间分片)](https://juejin.im/post/5d76f469f265da039a28aff7)一文中，提到了可以使用`时间分片`的方式来对长列表进行渲染，但这种方式更适用于列表项的 DOM 结构十分简单的情况。本文会介绍使用`虚拟列表`的方式，来同时加载大量数据。
+对于一次性插入大量数据的情况，一般有两种做法：
 
-## 为什么需要使用虚拟列表
+1. 时间分片
+2. 虚拟列表
 
-假设我们的长列表需要展示 10000 条记录，我们同时将 10000 条记录渲染到页面中，先来看看需要花费多长时间：
+本文作为开篇，着重来介绍如何使用`时间分片`的方式来渲染大量数据，虚拟列表相关的内容，日后会持续整理。
+
+## 最粗暴的做法（一次性渲染）
+
+我们先来看看最粗暴的做法，一次性将大量数据插入到页面中：
 
 ```js
-<button id="button">button</button><br>
 <ul id="container"></ul>
-document.getElementById('button').addEventListener('click',function(){
-    // 记录任务开始时间
-    let now = Date.now();
-    // 插入一万条数据
-    const total = 10000;
-    // 获取容器
-    let ul = document.getElementById('container');
-    // 将数据插入容器中
-    for (let i = 0; i < total; i++) {
-        let li = document.createElement('li');
-        li.innerText = ~~(Math.random() * total)
-        ul.appendChild(li);
-    }
-    console.log('JS运行时间：',Date.now() - now);
-    setTimeout(()=>{
-      console.log('总运行时间：',Date.now() - now);
-    },0)
+// 记录任务开始时间
+let now = Date.now();
+// 插入十万条数据
+const total = 100000;
+// 获取容器
+let ul = document.getElementById('container');
+// 将数据插入容器中
+for (let i = 0; i < total; i++) {
+    let li = document.createElement('li');
+    li.innerText = ~~(Math.random() * total)
+    ul.appendChild(li);
+}
 
-    // print JS运行时间： 38
-    // print 总运行时间： 957
-  })
+console.log('JS运行时间：',Date.now() - now);
+setTimeout(()=>{
+  console.log('总运行时间：',Date.now() - now);
+},0)
+// print: JS运行时间： 187
+// print: 总运行时间： 2844
 ```
 
-当我们点击按钮，会同时向页面中加入一万条记录，通过控制台的输出，我们可以粗略的统计到，JS 的运行时间为`38ms`,但渲染完成后的总时间为`957ms`。
+我们对十万条记录进行循环操作，JS的运行时间为`187ms`，还是蛮快的，但是最终渲染完成后的总时间确是`2844ms`。
 
 简单说明一下，为何两次`console.log`的结果时间差异巨大，并且是如何简单来统计`JS运行时间`和`总渲染时间`：
 
-- 在 JS 的`Event Loop`中，当 JS 引擎所管理的执行栈中的事件以及所有微任务事件全部执行完后，才会触发渲染线程对页面进行渲染
-- 第一个`console.log`的触发时间是在页面进行渲染之前，此时得到的间隔时间为 JS 运行所需要的时间
+- 在 JS 的`Event Loop`中，当JS引擎所管理的执行栈中的事件以及所有微任务事件全部执行完后，才会触发渲染线程对页面进行渲染
+- 第一个`console.log`的触发时间是在页面进行渲染之前，此时得到的间隔时间为JS运行所需要的时间
 - 第二个`console.log`是放到 setTimeout 中的，它的触发时间是在渲染完成，在下一次`Event Loop`中执行的
 
-[关于 Event Loop 的详细内容请参见这篇文章-->](https://juejin.im/post/5d5b4c2df265da03dd3d73e5)
+[关于Event Loop的详细内容请参见这篇文章-->](https://github.com/chenqf/frontEndBlog/issues/14)
 
-然后，我们通过`Chrome`的`Performance`工具来详细的分析这段代码的性能瓶颈在哪里：
+依照两次`console.log`的结果，可以得出结论：
 
-[![img](https://camo.githubusercontent.com/57b3ce2407b0ddde30cc068b178c7f9db923dcd90a6846d6b3c724c709e12a5f/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531386636383731653663363f773d3133343526683d35343626663d67696626733d343839313733)](https://camo.githubusercontent.com/57b3ce2407b0ddde30cc068b178c7f9db923dcd90a6846d6b3c724c709e12a5f/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531386636383731653663363f773d3133343526683d35343626663d67696626733d343839313733)
+对于大量数据渲染的时候，JS运算并不是性能的瓶颈，性能的瓶颈主要在于渲染阶段
 
-从`Performance`可以看出，代码从执行到渲染结束，共消耗了`960.8ms`,其中的主要时间消耗如下：
+## 使用定时器
 
-- Event(click) : `40.84ms`
-- Recalculate Style : `105.08ms`
-- Layout : `731.56ms`
-- Update Layer Tree : `58.87ms`
-- Paint : `15.32ms`
+从上面的例子，我们已经知道，页面的卡顿是由于同时渲染大量DOM所引起的，所以我们考虑将渲染过程分批进行
 
-从这里我们可以看出，我们的代码的执行过程中，消耗时间最多的两个阶段是`Recalculate Style`和`Layout`。
-
-- `Recalculate Style`：样式计算，浏览器根据 css 选择器计算哪些元素应该应用哪些规则，确定每个元素具体的样式。
-- `Layout`：布局，知道元素应用哪些规则之后，浏览器开始计算它要占据的空间大小及其在屏幕的位置。
-
-在实际的工作中，列表项必然不会像例子中仅仅只由一个 li 标签组成，必然是由复杂 DOM 节点组成的。
-
-那么可以想象的是，当列表项数过多并且列表项结构复杂的时候，同时渲染时，会在`Recalculate Style`和`Layout`阶段消耗大量的时间。
-
-而`虚拟列表`就是解决这一问题的一种实现。
-
-## 什么是虚拟列表
-
-`虚拟列表`其实是按需显示的一种实现，即只对`可见区域`进行渲染，对`非可见区域`中的数据不渲染或部分渲染的技术，从而达到极高的渲染性能。
-
-假设有 1 万条记录需要同时渲染，我们屏幕的`可见区域`的高度为`500px`,而列表项的高度为`50px`，则此时我们在屏幕中最多只能看到 10 个列表项，那么在首次渲染的时候，我们只需加载 10 条即可。
-
-[![img](https://camo.githubusercontent.com/8db2f6b1a9e6878e0a77aae662bb58b73097f5b07da072e41672bd3e30989cd7/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531393563663136613535383f773d35303626683d36343226663d706e6726733d3338343436)](https://camo.githubusercontent.com/8db2f6b1a9e6878e0a77aae662bb58b73097f5b07da072e41672bd3e30989cd7/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531393563663136613535383f773d35303626683d36343226663d706e6726733d3338343436)
-
-说完首次加载，再分析一下当滚动发生时，我们可以通过计算当前滚动值得知此时在屏幕`可见区域`应该显示的列表项。
-
-假设滚动发生，滚动条距顶部的位置为`150px`,则我们可得知在`可见区域`内的列表项为`第4项`至`第 13 项。
-
-[![img](https://camo.githubusercontent.com/84d5023cef5af5f53e351b13f2ef93873ec3ff6182de0ac24316c7c56307c863/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531393763323733636264393f773d35303626683d36373726663d706e6726733d3430343030)](https://camo.githubusercontent.com/84d5023cef5af5f53e351b13f2ef93873ec3ff6182de0ac24316c7c56307c863/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531393763323733636264393f773d35303626683d36373726663d706e6726733d3430343030)
-
-## 实现
-
-虚拟列表的实现，实际上就是在首屏加载的时候，只加载`可视区域`内需要的列表项，当滚动发生时，动态通过计算获得`可视区域`内的列表项，并将`非可视区域`内存在的列表项删除。
-
-- 计算当前`可视区域`起始数据索引(`startIndex`)
-- 计算当前`可视区域`结束数据索引(`endIndex`)
-- 计算当前`可视区域的`数据，并渲染到页面中
-- 计算`startIndex`对应的数据在整个列表中的偏移位置`startOffset`并设置到列表上
-
-[![img](https://camo.githubusercontent.com/1d24d762daa4203c728198f6ec04d165b3ec102cf284528ecc68afd2ea757b6c/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531396133393364656532633f773d37313926683d36373726663d706e6726733d3536393032)](https://camo.githubusercontent.com/1d24d762daa4203c728198f6ec04d165b3ec102cf284528ecc68afd2ea757b6c/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531396133393364656532633f773d37313926683d36373726663d706e6726733d3536393032)
-
-由于只是对`可视区域`内的列表项进行渲染，所以为了保持列表容器的高度并可正常的触发滚动，将 Html 结构设计成如下结构：
-
-```html
-<div class="infinite-list-container">
-  <div class="infinite-list-phantom"></div>
-  <div class="infinite-list">
-    <!-- item-1 -->
-    <!-- item-2 -->
-    <!-- ...... -->
-    <!-- item-n -->
-  </div>
-</div>
-```
-
-- `infinite-list-container` 为`可视区域`的容器
-- `infinite-list-phantom` 为容器内的占位，高度为总列表高度，用于形成滚动条
-- `infinite-list` 为列表项的`渲染区域`
-
-接着，监听`infinite-list-container`的`scroll`事件，获取滚动位置`scrollTop`
-
-- 假定`可视区域`高度固定，称之为`screenHeight`
-- 假定`列表每项`高度固定，称之为`itemSize`
-- 假定`列表数据`称之为`listData`
-- 假定`当前滚动位置`称之为`scrollTop`
-
-则可推算出：
-
-- 列表总高度`listHeight` = listData.length \* itemSize
-- 可显示的列表项数`visibleCount` = Math.ceil(screenHeight / itemSize)
-- 数据的起始索引`startIndex` = Math.floor(scrollTop / itemSize)
-- 数据的结束索引`endIndex` = startIndex + visibleCount
-- 列表显示数据为`visibleData` = listData.slice(startIndex,endIndex)
-
-当滚动后，由于`渲染区域`相对于`可视区域`已经发生了偏移，此时我需要获取一个偏移量`startOffset`，通过样式控制将`渲染区域`偏移至`可视区域`中。
-
-- 偏移量`startOffset` = scrollTop - (scrollTop % itemSize);
-
-最终的`简易代码`如下：
-
-```vue
-<template>
-  <div ref="list" class="infinite-list-container" @scroll="scrollEvent($event)">
-    <div
-      class="infinite-list-phantom"
-      :style="{ height: listHeight + 'px' }"
-    ></div>
-    <div class="infinite-list" :style="{ transform: getTransform }">
-      <div
-        ref="items"
-        class="infinite-list-item"
-        v-for="item in visibleData"
-        :key="item.id"
-        :style="{ height: itemSize + 'px', lineHeight: itemSize + 'px' }"
-      >
-        {{ item.value }}
-      </div>
-    </div>
-  </div>
-</template>
-export default { name:'VirtualList', props: { //所有列表数据 listData:{
-type:Array, default:()=>[] }, //每项高度 itemSize: { type: Number, default:200 }
-}, computed:{ //列表总高度 listHeight(){ return this.listData.length *
-this.itemSize; }, //可显示的列表项数 visibleCount(){ return
-Math.ceil(this.screenHeight / this.itemSize) }, //偏移量对应的style
-getTransform(){ return `translate3d(0,${this.startOffset}px,0)`; },
-//获取真实显示列表数据 visibleData(){ return this.listData.slice(this.start,
-Math.min(this.end,this.listData.length)); } }, mounted() { this.screenHeight =
-this.$el.clientHeight; this.start = 0; this.end = this.start +
-this.visibleCount; }, data() { return { //可视区域高度 screenHeight:0, //偏移量
-startOffset:0, //起始索引 start:0, //结束索引 end:null, }; }, methods: {
-scrollEvent() { //当前滚动位置 let scrollTop = this.$refs.list.scrollTop;
-//此时的开始索引 this.start = Math.floor(scrollTop / this.itemSize);
-//此时的结束索引 this.end = this.start + this.visibleCount; //此时的偏移量
-this.startOffset = scrollTop - (scrollTop % this.itemSize); } } };
-```
-
-[点击查看在线 DEMO 及完整代码](https://codesandbox.io/s/virtuallist-1-rp8pi)
-
-最终效果如下：
-
-[![img](https://camo.githubusercontent.com/d11c4887378d64b157e22e56643ce46c6755b774ca51a786e1d7a1a0cf8a6679/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531653031376437626261333f773d3132373026683d34323726663d67696626733d393132393536)](https://camo.githubusercontent.com/d11c4887378d64b157e22e56643ce46c6755b774ca51a786e1d7a1a0cf8a6679/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531653031376437626261333f773d3132373026683d34323726663d67696626733d393132393536)
-
-## 列表项动态高度
-
-在之前的实现中，列表项的高度是固定的，因为高度固定，所以可以很轻易的获取列表项的整体高度以及滚动时的显示数据与对应的偏移量。而实际应用的时候，当列表中包含文本之类的可变内容，会导致列表项的高度并不相同。
-
-比如这种情况：
-
-[![img](https://camo.githubusercontent.com/587da17053703cb28a55075898a062a264a2f6582d524f332f00517658c18046/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531396631653132316265393f773d34313726683d37303226663d706e6726733d3431333331)](https://camo.githubusercontent.com/587da17053703cb28a55075898a062a264a2f6582d524f332f00517658c18046/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531396631653132316265393f773d34313726683d37303226663d706e6726733d3431333331)
-
-在虚拟列表中应用动态高度的解决方案一般有如下三种：
-
-> 1.对组件属性`itemSize`进行扩展，支持传递类型为`数字`、`数组`、`函 数`
-
-- 可以是一个固定值，如 100，此时列表项是固高的
-- 可以是一个包含所有列表项高度的数据，如 [50, 20, 100, 80, ...]
-- 可以是一个根据列表项索引返回其高度的函数：(index: number): number
-
-这种方式虽然有比较好的灵活度，但仅适用于可以预先知道或可以通过计算得知列表项高度的情况，依然无法解决列表项高度由内容撑开的情况。
-
-> 2.将列表项`渲染到屏幕外`，对其高度进行测量并缓存，然后再将其渲染至可视区域内。
-
-由于预先渲染至屏幕外，再渲染至屏幕内，这导致渲染成本增加一倍，这对于数百万用户在低端移动设备上使用的产品来说是不切实际的。
-
-> 3.以`预估高度`先行渲染，然后获取真实高度并缓存。
-
-这是我选择的实现方式，可以避免前两种方案的不足。
-
-接下来，来看如何简易的实现：
-
-定义组件属性`estimatedItemSize`,用于接收`预估高度`
+在这里，我们使用`setTimeout`来实现分批渲染
 
 ```js
-props: {
-  //预估高度
-  estimatedItemSize: {
-    type: Number;
-  }
-}
-```
-
-定义`positions`，用于列表项渲染后存储`每一项的高度以及位置`信息，
-
-```js
-this.positions = [
-  // {
-  //   top:0,
-  //   bottom:100,
-  //   height:100
-  // }
-];
-```
-
-并在初始时根据`estimatedItemSize`对`positions`进行初始化。
-
-```js
-initPositions(){
-  this.positions = this.listData.map((item,index)=>{
-    return {
-      index,
-      height:this.estimatedItemSize,
-      top:index * this.estimatedItemSize,
-      bottom:(index + 1) * this.estimatedItemSize
+<ul id="container"></ul>
+//需要插入的容器
+let ul = document.getElementById('container');
+// 插入十万条数据
+let total = 100000;
+// 一次插入 20 条
+let once = 20;
+//总页数
+let page = total/once
+//每条记录的索引
+let index = 0;
+//循环加载数据
+function loop(curTotal,curIndex){
+    if(curTotal <= 0){
+        return false;
     }
-  })
+    //每页多少条
+    let pageCount = Math.min(curTotal , once);
+    setTimeout(()=>{
+        for(let i = 0; i < pageCount; i++){
+            let li = document.createElement('li');
+            li.innerText = curIndex + i + ' : ' + ~~(Math.random() * total)
+            ul.appendChild(li)
+        }
+        loop(curTotal - pageCount,curIndex + pageCount)
+    },0)
 }
+loop(total,index);
 ```
 
-由于列表项高度不定，并且我们维护了`positions`，用于记录每一项的位置，而`列表高度`实际就等于列表中最后一项的底部距离列表顶部的位置。
+用一个gif图来看一下效果
+
+[![img](https://raw.githubusercontent.com/chenqf/frontEndBlog/master/images/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%B8%B2%E6%9F%93/1.gif)](https://raw.githubusercontent.com/chenqf/frontEndBlog/master/images/大数据渲染/1.gif)
+
+我们可以看到，页面加载的时间已经非常快了，每次刷新时可以很快的看到第一屏的所有数据，但是当我们快速滚动页面的时候，会发现页面出现闪屏或白屏的现象
+
+### 为什么会出现闪屏现象呢
+
+首先，理清一些概念。`FPS`表示的是每秒钟画面更新次数。我们平时所看到的连续画面都是由一幅幅静止画面组成的，每幅画面称为一`帧`，`FPS`是描述`帧`变化速度的物理量。
+
+大多数电脑显示器的刷新频率是60Hz，大概相当于每秒钟重绘60次，`FPS`为60frame/s，为这个值的设定受屏幕分辨率、屏幕尺寸和显卡的影响。
+
+因此，当你对着电脑屏幕什么也不做的情况下，大多显示器也会以每秒60次的频率正在不断的更新屏幕上的图像。
+
+为什么你感觉不到这个变化？
+
+那是因为人的眼睛有视觉停留效应，即前一副画面留在大脑的印象还没消失，紧接着后一副画面就跟上来了，
+这中间只间隔了16.7ms(1000/60≈16.7)，所以会让你误以为屏幕上的图像是静止不动的。
+
+而屏幕给你的这种感觉是对的，试想一下，如果刷新频率变成1次/秒，屏幕上的图像就会出现严重的闪烁，
+这样就很容易引起眼睛疲劳、酸痛和头晕目眩等症状。
+
+大多数浏览器都会对重绘操作加以限制，不超过显示器的重绘频率，因为即使超过那个频率用户体验也不会有提升。
+因此，最平滑动画的最佳循环间隔是1000ms/60，约等于16.6ms。
+
+直观感受，不同帧率的体验：
+
+- 帧率能够达到 50 ～ 60 FPS 的动画将会相当流畅，让人倍感舒适；
+- 帧率在 30 ～ 50 FPS 之间的动画，因各人敏感程度不同，舒适度因人而异；
+- 帧率在 30 FPS 以下的动画，让人感觉到明显的卡顿和不适感；
+- 帧率波动很大的动画，亦会使人感觉到卡顿。
+
+### 简单聊一下 setTimeout 和闪屏现象
+
+- `setTimeout`的执行时间并不是确定的。在JS中，`setTimeout`任务被放进事件队列中，只有主线程执行完才会去检查事件队列中的任务是否需要执行，因此`setTimeout`的实际执行时间可能会比其设定的时间晚一些。
+- 刷新频率受屏幕分辨率和屏幕尺寸的影响，因此不同设备的刷新频率可能会不同，而`setTimeout`只能设置一个固定时间间隔，这个时间不一定和屏幕的刷新时间相同。
+
+以上两种情况都会导致setTimeout的执行步调和屏幕的刷新步调不一致。
+
+在`setTimeout`中对dom进行操作，必须要等到屏幕下次绘制时才能更新到屏幕上，如果两者步调不一致，就可能导致中间某一帧的操作被跨越过去，而直接更新下一帧的元素，从而导致丢帧现象。
+
+## 使用 requestAnimationFrame
+
+与`setTimeout`相比，`requestAnimationFrame`最大的优势是由系统来决定回调函数的执行时机。
+
+如果屏幕刷新率是60Hz,那么回调函数就每16.7ms被执行一次，如果刷新率是75Hz，那么这个时间间隔就变成了1000/75=13.3ms，换句话说就是，`requestAnimationFrame`的步伐跟着系统的刷新步伐走。它能保证回调函数在屏幕每一次的刷新间隔中只被执行一次，这样就不会引起丢帧现象。
+
+我们使用`requestAnimationFrame`来进行分批渲染：
 
 ```js
-//列表总高度
-listHeight(){
-  return this.positions[this.positions.length - 1].bottom;
-}
-```
-
-由于需要在`渲染完成`后，获取列表每项的位置信息并缓存，所以使用钩子函数`updated`来实现：
-
-```js
-updated(){
-  let nodes = this.$refs.items;
-  nodes.forEach((node)=>{
-    let rect = node.getBoundingClientRect();
-    let height = rect.height;
-    let index = +node.id.slice(1)
-    let oldHeight = this.positions[index].height;
-    let dValue = oldHeight - height;
-    //存在差值
-    if(dValue){
-      this.positions[index].bottom = this.positions[index].bottom - dValue;
-      this.positions[index].height = height;
-      for(let k = index + 1;k<this.positions.length; k++){
-        this.positions[k].top = this.positions[k-1].bottom;
-        this.positions[k].bottom = this.positions[k].bottom - dValue;
-      }
+<ul id="container"></ul>
+//需要插入的容器
+let ul = document.getElementById('container');
+// 插入十万条数据
+let total = 100000;
+// 一次插入 20 条
+let once = 20;
+//总页数
+let page = total/once
+//每条记录的索引
+let index = 0;
+//循环加载数据
+function loop(curTotal,curIndex){
+    if(curTotal <= 0){
+        return false;
     }
-  })
+    //每页多少条
+    let pageCount = Math.min(curTotal , once);
+    window.requestAnimationFrame(function(){
+        for(let i = 0; i < pageCount; i++){
+            let li = document.createElement('li');
+            li.innerText = curIndex + i + ' : ' + ~~(Math.random() * total)
+            ul.appendChild(li)
+        }
+        loop(curTotal - pageCount,curIndex + pageCount)
+    })
 }
+loop(total,index);
 ```
 
-滚动后获取列表`开始索引`的方法修改为通过`缓存`获取：
+看下效果
 
-```
-//获取列表起始索引
-getStartIndex(scrollTop = 0){
-  let item = this.positions.find(i => i && i.bottom > scrollTop);
-  return item.index;
-}
-```
+[![img](https://raw.githubusercontent.com/chenqf/frontEndBlog/master/images/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%B8%B2%E6%9F%93/2.gif)](https://raw.githubusercontent.com/chenqf/frontEndBlog/master/images/大数据渲染/2.gif)
 
-由于我们的缓存数据，本身就是有顺序的，所以获取`开始索引`的方法可以考虑通过`二分查找`的方式来降低检索次数：
+我们可以看到，页面加载的速度很快，并且滚动的时候，也很流畅没有出现闪烁丢帧的现象。
+
+这就结束了么，还可以再优化么？
+
+当然~~
+
+## 使用 DocumentFragment
+
+先解释一下什么是 DocumentFragment ，文献引用自[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/DocumentFragment)
+
+> ```
+> DocumentFragment`，文档片段接口，表示一个没有父级文件的最小文档对象。它被作为一个轻量版的`Document`使用，用于存储已排好版的或尚未打理好格式的XML片段。最大的区别是因为`DocumentFragment`不是真实DOM树的一部分，它的变化不会触发DOM树的（重新渲染) ，且不会导致性能等问题。
+> 可以使用`document.createDocumentFragment`方法或者构造函数来创建一个空的`DocumentFragment
+> ```
+
+从MDN的说明中，我们得知`DocumentFragments`是DOM节点，但并不是DOM树的一部分，可以认为是存在内存中的，所以将子元素插入到文档片段时不会引起页面回流。
+
+当`append`元素到`document`中时，被`append`进去的元素的样式表的计算是同步发生的，此时调用 getComputedStyle 可以得到样式的计算值。
+而`append`元素到`documentFragment` 中时，是不会计算元素的样式表，所以`documentFragment` 性能更优。当然现在浏览器的优化已经做的很好了，
+当`append`元素到`document`中后，没有访问 getComputedStyle 之类的方法时，现代浏览器也可以把样式表的计算推迟到脚本执行之后。
+
+最后修改代码如下：
 
 ```js
-//获取列表起始索引
-getStartIndex(scrollTop = 0){
-  //二分法查找
-  return this.binarySearch(this.positions,scrollTop)
-},
-//二分法查找
-binarySearch(list,value){
-  let start = 0;
-  let end = list.length - 1;
-  let tempIndex = null;
-  while(start <= end){
-    let midIndex = parseInt((start + end)/2);
-    let midValue = list[midIndex].bottom;
-    if(midValue === value){
-      return midIndex + 1;
-    }else if(midValue < value){
-      start = midIndex + 1;
-    }else if(midValue > value){
-      if(tempIndex === null || tempIndex > midIndex){
-        tempIndex = midIndex;
-      }
-      end = end - 1;
+<ul id="container"></ul>
+//需要插入的容器
+let ul = document.getElementById('container');
+// 插入十万条数据
+let total = 100000;
+// 一次插入 20 条
+let once = 20;
+//总页数
+let page = total/once
+//每条记录的索引
+let index = 0;
+//循环加载数据
+function loop(curTotal,curIndex){
+    if(curTotal <= 0){
+        return false;
     }
-  }
-  return tempIndex;
-},
-```
-
-滚动后将`偏移量`的获取方式变更：
-
-```js
-scrollEvent() {
-  //...省略
-  if(this.start >= 1){
-    this.startOffset = this.positions[this.start - 1].bottom
-  }else{
-    this.startOffset = 0;
-  }
+    //每页多少条
+    let pageCount = Math.min(curTotal , once);
+    window.requestAnimationFrame(function(){
+        let fragment = document.createDocumentFragment();
+        for(let i = 0; i < pageCount; i++){
+            let li = document.createElement('li');
+            li.innerText = curIndex + i + ' : ' + ~~(Math.random() * total)
+            fragment.appendChild(li)
+        }
+        ul.appendChild(fragment)
+        loop(curTotal - pageCount,curIndex + pageCount)
+    })
 }
+loop(total,index);
 ```
-
-通过[faker.js](https://github.com/marak/Faker.js/) 来创建一些`随机数据`
-
-```js
-let data = [];
-for (let id = 0; id < 10000; id++) {
-  data.push({
-    id,
-    value: faker.lorem.sentences(), // 长文本
-  });
-}
-```
-
-[点击查看在线 DEMO 及完整代码](https://codesandbox.io/s/virtuallist2-1bqk6)
-
-最终效果如下：
-
-[![img](https://camo.githubusercontent.com/28b93db4df91dae5dbb464294eeb9430e1318f5f140cc348ff90d606edbcc59d/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531653936353834623639303f773d33363026683d36353526663d67696626733d31313433373239)](https://camo.githubusercontent.com/28b93db4df91dae5dbb464294eeb9430e1318f5f140cc348ff90d606edbcc59d/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531653936353834623639303f773d33363026683d36353526663d67696626733d31313433373239)
-
-从演示效果上看，我们实现了基于`文字内容动态撑高列表项`情况下的`虚拟列表`，但是我们可能会发现，当滚动过快时，会出现短暂的`白屏现象`。
-
-为了使页面平滑滚动，我们还需要在`可见区域`的上方和下方渲染额外的项目，在滚动时给予一些`缓冲`，所以将屏幕分为三个区域：
-
-- 可视区域上方：`above`
-- 可视区域：`screen`
-- 可视区域下方：`below`
-
-[![img](https://camo.githubusercontent.com/de4aa6210073d8f7fa94aad3fcee208eb3da9833f03ed8a92fe4f2e1f59d0280/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531613539333137636165373f773d34363126683d34393326663d706e6726733d3236343633)](https://camo.githubusercontent.com/de4aa6210073d8f7fa94aad3fcee208eb3da9833f03ed8a92fe4f2e1f59d0280/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531613539333137636165373f773d34363126683d34393326663d706e6726733d3236343633)
-
-定义组件属性`bufferScale`,用于接收`缓冲区数据`与`可视区数据`的`比例`
-
-```js
-props: {
-  //缓冲区比例
-  bufferScale:{
-    type:Number,
-    default:1
-  }
-}
-```
-
-可视区上方渲染条数`aboveCount`获取方式如下：
-
-```js
-aboveCount(){
-  return Math.min(this.start,this.bufferScale * this.visibleCount)
-}
-```
-
-可视区下方渲染条数`belowCount`获取方式如下：
-
-```js
-belowCount(){
-  return Math.min(this.listData.length - this.end,this.bufferScale * this.visibleCount);
-}
-```
-
-真实渲染数据`visibleData`获取方式如下：
-
-```js
-visibleData(){
-  let start = this.start - this.aboveCount;
-  let end = this.end + this.belowCount;
-  return this._listData.slice(start, end);
-}
-```
-
-[点击查看在线 DEMO 及完整代码](https://codesandbox.io/s/virtuallist-3-i3h9v)
-
-最终效果如下：
-[![img](https://camo.githubusercontent.com/602948c486f1455886c4581735f5f2030d256fa712ea0cfdf6d26b4ab55c64ae/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531656530656230666338393f773d33363026683d36333626663d67696626733d31313537353835)](https://camo.githubusercontent.com/602948c486f1455886c4581735f5f2030d256fa712ea0cfdf6d26b4ab55c64ae/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f31302f32392f313665313531656530656230666338393f773d33363026683d36333626663d67696626733d31313537353835)
-
-> 基于这个方案，开发了一个基于 Vue2.x 的虚拟列表组件：[vue-virtual-listview](https://github.com/chenqf/vue-virtual-listview),可[点击查看完整代码](https://github.com/chenqf/vue-virtual-listview)。
-
-## 面向未来
-
-在前文中我们使用`监听scroll事件`的方式来触发可视区域中数据的更新，当滚动发生后，scroll 事件会频繁触发，很多时候会造成`重复计算`的问题，从性能上来说无疑存在浪费的情况。
-
-可以使用[IntersectionObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)替换监听 scroll 事件，`IntersectionObserver`可以监听目标元素是否出现在可视区域内，在监听的回调事件中执行可视区域数据的更新，并且`IntersectionObserver`的监听回调是异步触发，不随着目标元素的滚动而触发，性能消耗极低。
-
-## 遗留问题
-
-我们虽然实现了根据列表项动态高度下的虚拟列表，但如果列表项中包含图片，并且列表高度由图片撑开，由于图片会发送网络请求，此时无法保证我们在获取列表项真实高度时图片是否已经加载完成，从而造成计算不准确的情况。
-
-这种情况下，如果我们能监听列表项的大小变化就能获取其真正的高度了。我们可以使用[ResizeObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/ResizeObserver)来监听列表项内容区域的高度改变，从而实时获取每一列表项的高度。
-
-不过遗憾的是，在撰写本文的时候，仅有少数[浏览器支持](https://www.caniuse.com/#search=ResizeObserver)`ResizeObserver`。
 
 ## 参考
 
-- [浅说虚拟列表的实现原理](https://github.com/dwqs/blog/issues/70)
-- [react-virtualized 组件的虚拟列表实现](https://github.com/dwqs/blog/issues/72)
-- [React 和无限列表](https://itsze.ro/blog/2017/04/09/infinite-list-and-react.html)
-- [再谈前端虚拟列表的实现](https://zhuanlan.zhihu.com/p/34585166)
+- [Web 动画帧率（FPS）计算](https://www.cnblogs.com/coco1s/archive/2017/12/13/8029582.html)
+- [requestAnimationFrame 知多少](https://www.cnblogs.com/onepixel/p/7078617.html)
