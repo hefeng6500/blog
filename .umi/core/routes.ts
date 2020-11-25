@@ -42,7 +42,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/index.md",
-          "updatedTime": 1606223323000,
+          "updatedTime": 1606315224000,
           "hero": {
             "title": "高级前端进阶",
             "desc": "<div class=\"markdown\"><p>🍙 To be an overflow stack engineer</p></div>",
@@ -82,7 +82,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/adapter-mode.md",
-          "updatedTime": 1606313558592,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -104,7 +104,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/decorator-mode.md",
-          "updatedTime": 1606313558861,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -131,7 +131,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/factory-mode.md",
-          "updatedTime": 1606313559093,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -158,7 +158,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/index.md",
-          "updatedTime": 1606310643613,
+          "updatedTime": 1606315224000,
           "nav": {
             "title": "设计模式",
             "path": "/design-patterns"
@@ -180,7 +180,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/observer-mode.md",
-          "updatedTime": 1606313559684,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -202,7 +202,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/prototype-mode.md",
-          "updatedTime": 1606313559795,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -224,7 +224,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/publish-subscribe-mode.md",
-          "updatedTime": 1606313560361,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -251,7 +251,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/singleton-mode.md",
-          "updatedTime": 1606313560790,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -273,7 +273,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/strategy-mode.md",
-          "updatedTime": 1606313561155,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -322,7 +322,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/interview/index.md",
-          "updatedTime": 1606224318000,
+          "updatedTime": 1606315224000,
           "nav": {
             "title": "面试题",
             "path": "/interview"
@@ -416,7 +416,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/prototype.md",
-          "updatedTime": 1606313562204,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -483,7 +483,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/performance/index.md",
-          "updatedTime": 1606310628119,
+          "updatedTime": 1606315224000,
           "nav": {
             "title": "性能优化",
             "path": "/performance"
@@ -505,7 +505,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/performance/time-slice.md",
-          "updatedTime": 1606313563166,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -567,7 +567,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/React/index.md",
-          "updatedTime": 1606314661211,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -734,7 +734,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/Vue/virtualDOM.md",
-          "updatedTime": 1606313563666,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -776,7 +776,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/Vue/vue-i18n.md",
-          "updatedTime": 1606313563975,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,
@@ -833,7 +833,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/Vue/vue3.0-1.md",
-          "updatedTime": 1606313819116,
+          "updatedTime": 1606315224000,
           "slugs": [
             {
               "depth": 1,

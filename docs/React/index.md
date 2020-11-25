@@ -6,7 +6,7 @@
 
 返回一个虚拟DOM对象，用于描述DOM结构，如下：
 
-```jsx
+```jsx | pure
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -39,7 +39,7 @@ ReactDOM.render(ele, document.getElementById("root"));
 
 ### 函数组件
 
-```jsx
+```jsx | pure
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -52,7 +52,7 @@ ReactDOM.render(<Welcome name="hefeng6500"/>, document.getElementById("root"));
 
 ### 类组件
 
-```jsx
+```jsx | pure
 class Welcome extends React.Component {
   constructor(props) {
     super(props);
@@ -104,7 +104,7 @@ class Welcome extends React.Component {
 
 方式一：
 
-```jsx
+```jsx | pure
 this.setState({ number: state.number + 1 });
 ```
 
@@ -114,7 +114,7 @@ this.setState({ number: state.number + 1 });
 - 因为 `this.props` 和 `this.state` 可能会异步更新，所以你不要依赖他们的值来更新下一个状态
 - 可以让 `setState()` 接收一个函数而不是一个对象。这个函数用上一个 `state` 作为第一个参数
 
-```jsx
+```jsx | pure
 this.setState((state) => ({ number: state.number + 1 }));
 ```
 
@@ -130,7 +130,7 @@ this.setState((state) => ({ number: state.number + 1 }));
 - 可以使用 ref 去存储 DOM 节点的引用
 - 当 ref 属性用于 HTML 元素时，构造函数中使用 `React.createRef()` 创建的 ref 接收底层 DOM 元素，`current ` 属性作为该DOM元素
 
-```jsx
+```jsx | pure
 import React from "react";
 import ReactDOM from "react-dom";
 class Sum extends React.Component {
@@ -166,7 +166,7 @@ ReactDOM.render(<Sum />, document.getElementById("root"));
 
 - 当 ref 属性用于自定义 class 组件时，ref 对象接收组件的挂载实例作为其 current 属性
 
-```jsx
+```jsx | pure
 import React from "react";
 import ReactDOM from "react-dom";
 class Form extends React.Component {
@@ -209,7 +209,7 @@ ReactDOM.render(<Form />, document.getElementById("root"));
 
 - 向下传递 `ref` 给子组件
 
-```jsx
+```jsx | pure
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -248,7 +248,7 @@ ReactDOM.render(<Form />, document.getElementById("root"));
 
 ![react-life-cycle](../assets/react-life-cycle.jpg)
 
-```jsx
+```jsx | pure
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 class Counter extends React.Component {
@@ -354,7 +354,7 @@ index.js:36 js7.[parent] componentDidUpdate hook in running.
 
 
 
-```jsx
+```jsx | pure
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -471,7 +471,7 @@ index.js:75 [child] child componentDidUpdate is running.
 - 在某些场景下，你想在整个组件树中传递数据，但却不想手动地在每一层传递属性。你可以直接在 React 中使用强大的 `context` API解决上述问题
 - 在一个典型的 React 应用中，数据是通过 `props ` 属性自上而下（由父及子）进行传递的，但这种做法对于某些类型的属性而言是极其繁琐的（例如：地区偏好，UI 主题），这些属性是应用程序中许多组件都需要的。Context 提供了一种在组件之间共享此类值的方式，而不必显式地通过组件树的逐层传递 `props`
 
-```jsx
+```jsx | pure
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
@@ -593,7 +593,7 @@ ReactDOM.render(<Page />, root);
 - 高阶组件就是一个函数，传给它一个组件，它返回一个新的组件
 - 高阶组件的作用其实就是为了组件之间的代码复用
 
-```jsx
+```jsx | pure
 const NewComponent = higherOrderComponent(OldComponent)
 ```
 
@@ -605,7 +605,7 @@ const NewComponent = higherOrderComponent(OldComponent)
 
 - 基于属性代理：操作组件的props
 
-```jsx
+```jsx | pure
 import React from "react";
 import ReactDOM from "react-dom";
 const loading = (message) => (OldComponent) => {
@@ -654,7 +654,7 @@ ReactDOM.render(<LoadingHello />, document.getElementById("root"));
 
 - 基于反向继承：拦截生命周期、state、渲染过程
 
-```jsx
+```jsx | pure
 import React from 'react';
 import ReactDOM from 'react-dom';
 class Button extends React.Component{
@@ -718,7 +718,7 @@ ReactDOM.render(
 
 ### 1、原生实现
 
-```jsx
+```jsx | pure
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -763,7 +763,7 @@ ReactDOM.render(
 
 ### 2、children
 
-```jsx
+```jsx | pure
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -808,7 +808,7 @@ ReactDOM.render(
 
 ### 3、render属性
 
-```jsx
+```jsx | pure
 import React from "react";
 import ReactDOM from "react-dom";
 class MouseTracker extends React.Component {
@@ -853,7 +853,7 @@ ReactDOM.render(
 
 ### 4、HOC
 
-```jsx
+```jsx | pure
 import React from "react";
 import ReactDOM from "react-dom";
 
