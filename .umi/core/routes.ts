@@ -30,9 +30,7 @@ export function getRoutes() {
           ]
         },
         "title": "Site Name",
-        "mode": "site",
-        "base": '/blog/',
-        "description": "hefeng6500的博客"
+        "mode": "site"
       },
       ...props,
     }),
