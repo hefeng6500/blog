@@ -36,13 +36,13 @@ jobs:
         yarn build
 
     - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@latest
-        with:
-          ACCESS_TOKEN: ${{ secrets.VUE_ADMIN_TEMPLATE }}
-          BRANCH: main
-          FOLDER: dist
-          REPOSITORY_NAME: hefeng6500/hefeng6500.github.io
-          TARGET_FOLDER: blog
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        ACCESS_TOKEN: ${{ secrets.DEPLOY_KEY }}
+        BRANCH: main
+        FOLDER: dist
+        REPOSITORY_NAME: hefeng6500/hefeng6500.github.io
+        TARGET_FOLDER: blog
 
       env:
         CI: true
