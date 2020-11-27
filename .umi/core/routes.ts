@@ -9,7 +9,7 @@ export function getRoutes() {
   {
     "path": "/",
     "component": (props) => require('react').createElement(require('../../node_modules/_@umijs_preset-dumi@1.0.34@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"*":{"/getting-started":[{"path":"/getting-started","title":"快速上手","meta":{}}],"*":[{"path":"/","title":"Index","meta":{}}],"/design-patterns":[{"path":"/design-patterns","title":"设计模式","meta":{}},{"path":"/design-patterns/adapter-mode","title":"适配器模式","meta":{}},{"path":"/design-patterns/decorator-mode","title":"装饰器模式","meta":{}},{"path":"/design-patterns/factory-mode","title":"简单工厂模式","meta":{}},{"path":"/design-patterns/observer-mode","title":"观察者模式","meta":{}},{"path":"/design-patterns/prototype-mode","title":"原型模式","meta":{}},{"path":"/design-patterns/publish-subscribe-mode","title":"发布订阅模式","meta":{}},{"path":"/design-patterns/singleton-mode","title":"单例模式","meta":{}},{"path":"/design-patterns/strategy-mode","title":"策略模式","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}],"/javascript":[{"path":"/javascript/higher-order function","title":"高阶函数","meta":{}},{"path":"/javascript/prototype","title":"原型、原型链和继承","meta":{}}],"/performance":[{"path":"/performance","title":"性能优化总括","meta":{}},{"path":"/performance/time-slice","title":"如何高性能的渲染十万条数据(时间分片)","meta":{}},{"path":"/performance/virtual-scroll","title":"如何高性能的渲染十万条数据(虚拟列表)","meta":{}}],"/react":[{"path":"/react","title":"React 进阶","meta":{}},{"path":"/react/react-source","title":"React 源码","meta":{}}],"/vue":[{"path":"/vue/virtual-dom","title":"虚拟 DOM","meta":{}},{"path":"/vue/vue-i18n","title":"vue-i18n","meta":{}},{"path":"/vue/vue3","title":"vue3-app","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"快速上手","order":1,"path":"/getting-started"},{"path":"/vue","title":"Vue"},{"path":"/react","title":"React"},{"path":"/interview","title":"面试题"},{"path":"/javascript","title":"Javascript"},{"title":"性能优化","path":"/performance"},{"path":"/design-patterns","title":"设计模式"}]},"title":"hefeng6500 的博客","desc":"hefeng6500 的博客","mode":"site"},
+      ...{"menus":{"*":{"/getting-started":[{"path":"/getting-started","title":"快速上手","meta":{}}],"*":[{"path":"/","title":"Index","meta":{}}],"/algorithm":[{"path":"/algorithm/leecode","title":"🔥LeetCode 热题 HOT 100","meta":{}}],"/design-patterns":[{"path":"/design-patterns","title":"设计模式","meta":{}},{"path":"/design-patterns/adapter-mode","title":"适配器模式","meta":{}},{"path":"/design-patterns/decorator-mode","title":"装饰器模式","meta":{}},{"path":"/design-patterns/factory-mode","title":"简单工厂模式","meta":{}},{"path":"/design-patterns/observer-mode","title":"观察者模式","meta":{}},{"path":"/design-patterns/prototype-mode","title":"原型模式","meta":{}},{"path":"/design-patterns/publish-subscribe-mode","title":"发布订阅模式","meta":{}},{"path":"/design-patterns/singleton-mode","title":"单例模式","meta":{}},{"path":"/design-patterns/strategy-mode","title":"策略模式","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}],"/javascript":[{"path":"/javascript/higher-order function","title":"高阶函数","meta":{}},{"path":"/javascript/prototype","title":"原型、原型链和继承","meta":{}}],"/performance":[{"path":"/performance","title":"性能优化总括","meta":{}},{"path":"/performance/time-slice","title":"如何高性能的渲染十万条数据(时间分片)","meta":{}},{"path":"/performance/virtual-scroll","title":"如何高性能的渲染十万条数据(虚拟列表)","meta":{}}],"/react":[{"path":"/react","title":"React 进阶","meta":{}},{"path":"/react/react-source","title":"React 源码","meta":{}}],"/vue":[{"path":"/vue/virtual-dom","title":"虚拟 DOM","meta":{}},{"path":"/vue/vue-i18n","title":"vue-i18n","meta":{}},{"path":"/vue/vue3","title":"vue3-app","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"快速上手","order":1,"path":"/getting-started"},{"path":"/vue","title":"Vue"},{"path":"/react","title":"React"},{"title":"力扣","path":"/algorithm"},{"path":"/interview","title":"面试题"},{"path":"/javascript","title":"Javascript"},{"title":"性能优化","path":"/performance"},{"path":"/design-patterns","title":"设计模式"}]},"title":"hefeng6500 的博客","desc":"hefeng6500 的博客","mode":"site"},
       ...props,
     }),
     "routes": [
@@ -75,6 +75,43 @@ export function getRoutes() {
           "title": "Index"
         },
         "title": "Index"
+      },
+      {
+        "path": "/algorithm/leecode",
+        "component": require('../../docs/algorithm/leecode.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/algorithm/leecode.md",
+          "updatedTime": 1606472874543,
+          "nav": {
+            "title": "力扣",
+            "path": "/algorithm"
+          },
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "🔥LeetCode 热题 HOT 100",
+              "heading": "leetcode-热题-hot-100"
+            },
+            {
+              "depth": 2,
+              "value": "1、两数之和",
+              "heading": "1、两数之和"
+            },
+            {
+              "depth": 3,
+              "value": "暴力解法",
+              "heading": "暴力解法"
+            },
+            {
+              "depth": 3,
+              "value": "哈希表",
+              "heading": "哈希表"
+            }
+          ],
+          "title": "🔥LeetCode 热题 HOT 100"
+        },
+        "title": "🔥LeetCode 热题 HOT 100"
       },
       {
         "path": "/design-patterns/adapter-mode",
@@ -505,7 +542,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/performance/time-slice.md",
-          "updatedTime": 1606315224000,
+          "updatedTime": 1606348572000,
           "slugs": [
             {
               "depth": 1,
@@ -567,7 +604,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/performance/virtual-scroll.md",
-          "updatedTime": 1606346735028,
+          "updatedTime": 1606348572000,
           "slugs": [
             {
               "depth": 1,
@@ -796,7 +833,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/React/react-source.md",
-          "updatedTime": 1606348423740,
+          "updatedTime": 1606348572000,
           "slugs": [
             {
               "depth": 1,
@@ -1047,6 +1084,12 @@ export function getRoutes() {
           }
         },
         "title": "vue3-app"
+      },
+      {
+        "path": "/algorithm",
+        "meta": {},
+        "exact": true,
+        "redirect": "/algorithm/leecode"
       },
       {
         "path": "/javascript",
