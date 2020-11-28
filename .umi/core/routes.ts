@@ -9,33 +9,10 @@ export function getRoutes() {
   {
     "path": "/",
     "component": (props) => require('react').createElement(require('../../node_modules/_@umijs_preset-dumi@1.0.34@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"*":{"/getting-started":[{"path":"/getting-started","title":"快速上手","meta":{}}],"*":[{"path":"/","title":"Index","meta":{}}],"/algorithm":[{"path":"/algorithm/leecode","title":"🔥LeetCode 热题 HOT 100","meta":{}}],"/design-patterns":[{"path":"/design-patterns","title":"设计模式","meta":{}},{"path":"/design-patterns/adapter-mode","title":"适配器模式","meta":{}},{"path":"/design-patterns/decorator-mode","title":"装饰器模式","meta":{}},{"path":"/design-patterns/factory-mode","title":"简单工厂模式","meta":{}},{"path":"/design-patterns/observer-mode","title":"观察者模式","meta":{}},{"path":"/design-patterns/prototype-mode","title":"原型模式","meta":{}},{"path":"/design-patterns/publish-subscribe-mode","title":"发布订阅模式","meta":{}},{"path":"/design-patterns/singleton-mode","title":"单例模式","meta":{}},{"path":"/design-patterns/strategy-mode","title":"策略模式","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}],"/javascript":[{"path":"/javascript/higher-order function","title":"高阶函数","meta":{}},{"path":"/javascript/prototype","title":"原型、原型链和继承","meta":{}}],"/performance":[{"path":"/performance","title":"性能优化总括","meta":{}},{"path":"/performance/time-slice","title":"如何高性能的渲染十万条数据(时间分片)","meta":{}},{"path":"/performance/virtual-scroll","title":"如何高性能的渲染十万条数据(虚拟列表)","meta":{}}],"/react":[{"path":"/react","title":"React 进阶","meta":{}},{"path":"/react/react-source","title":"React 源码","meta":{}}],"/vue":[{"path":"/vue/virtual-dom","title":"虚拟 DOM","meta":{}},{"path":"/vue/vue-i18n","title":"vue-i18n","meta":{}},{"path":"/vue/vue3","title":"vue3-app","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"快速上手","order":1,"path":"/getting-started"},{"path":"/vue","title":"Vue"},{"path":"/react","title":"React"},{"title":"力扣","path":"/algorithm"},{"path":"/interview","title":"面试题"},{"path":"/javascript","title":"Javascript"},{"title":"性能优化","path":"/performance"},{"path":"/design-patterns","title":"设计模式"}]},"title":"hefeng6500 的博客","desc":"hefeng6500 的博客","mode":"site"},
+      ...{"menus":{"*":{"*":[{"path":"/","title":"Index","meta":{}}],"/algorithm":[{"path":"/algorithm/algorithm-complexity","title":"算法的时间与空间复杂度","meta":{}},{"path":"/algorithm/leecode","title":"🔥LeetCode 热题 HOT 100","meta":{}}],"/design-patterns":[{"path":"/design-patterns","title":"设计模式","meta":{}},{"path":"/design-patterns/adapter-mode","title":"适配器模式","meta":{}},{"path":"/design-patterns/decorator-mode","title":"装饰器模式","meta":{}},{"path":"/design-patterns/factory-mode","title":"简单工厂模式","meta":{}},{"path":"/design-patterns/observer-mode","title":"观察者模式","meta":{}},{"path":"/design-patterns/prototype-mode","title":"原型模式","meta":{}},{"path":"/design-patterns/publish-subscribe-mode","title":"发布订阅模式","meta":{}},{"path":"/design-patterns/singleton-mode","title":"单例模式","meta":{}},{"path":"/design-patterns/strategy-mode","title":"策略模式","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}],"/javascript":[{"path":"/javascript/higher-order function","title":"高阶函数","meta":{}},{"path":"/javascript/prototype","title":"原型、原型链和继承","meta":{}}],"/performance":[{"path":"/performance","title":"性能优化总括","meta":{}},{"path":"/performance/time-slice","title":"如何高性能的渲染十万条数据(时间分片)","meta":{}},{"path":"/performance/virtual-scroll","title":"如何高性能的渲染十万条数据(虚拟列表)","meta":{}}],"/react":[{"path":"/react","title":"React 进阶","meta":{}},{"path":"/react/react-source","title":"React 源码","meta":{}}],"/vue":[{"path":"/vue/virtual-dom","title":"虚拟 DOM","meta":{}},{"path":"/vue/vue-i18n","title":"vue-i18n","meta":{}},{"path":"/vue/vue3","title":"vue3-app","meta":{}}]}},"locales":[],"navs":{"*":[{"path":"/vue","title":"Vue"},{"path":"/react","title":"React"},{"path":"/algorithm","title":"力扣"},{"path":"/interview","title":"面试题"},{"path":"/javascript","title":"Javascript"},{"title":"性能优化","path":"/performance"},{"path":"/design-patterns","title":"设计模式"}]},"title":"hefeng6500 的博客","desc":"hefeng6500 的博客","mode":"site"},
       ...props,
     }),
     "routes": [
-      {
-        "path": "/getting-started",
-        "component": require('../../docs/getting-started.md').default,
-        "exact": true,
-        "meta": {
-          "filePath": "docs/getting-started.md",
-          "updatedTime": 1606223323000,
-          "nav": {
-            "title": "快速上手",
-            "order": 1,
-            "path": "/getting-started"
-          },
-          "slugs": [
-            {
-              "depth": 1,
-              "value": "快速上手",
-              "heading": "快速上手"
-            }
-          ],
-          "title": "快速上手"
-        },
-        "title": "快速上手"
-      },
       {
         "path": "/",
         "component": require('../../docs/index.md').default,
@@ -77,12 +54,79 @@ export function getRoutes() {
         "title": "Index"
       },
       {
+        "path": "/algorithm/algorithm-complexity",
+        "component": require('../../docs/algorithm/algorithm-complexity.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/algorithm/algorithm-complexity.md",
+          "updatedTime": 1606546917569,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "算法的时间与空间复杂度",
+              "heading": "算法的时间与空间复杂度"
+            },
+            {
+              "depth": 2,
+              "value": "一、时间复杂度",
+              "heading": "一、时间复杂度"
+            },
+            {
+              "depth": 3,
+              "value": "常数阶O(1)",
+              "heading": "常数阶o1"
+            },
+            {
+              "depth": 3,
+              "value": "线性阶O(n)",
+              "heading": "线性阶on"
+            },
+            {
+              "depth": 3,
+              "value": "对数阶O(logN)",
+              "heading": "对数阶ologn"
+            },
+            {
+              "depth": 3,
+              "value": "平方阶O(n²)",
+              "heading": "平方阶on²"
+            },
+            {
+              "depth": 3,
+              "value": "立方阶O(n³)、K次方阶O(n^k)",
+              "heading": "立方阶on³、k次方阶onk"
+            },
+            {
+              "depth": 2,
+              "value": "二、空间复杂度",
+              "heading": "二、空间复杂度"
+            },
+            {
+              "depth": 3,
+              "value": "空间复杂度 O(1)",
+              "heading": "空间复杂度-o1"
+            },
+            {
+              "depth": 3,
+              "value": "空间复杂度 O(n)",
+              "heading": "空间复杂度-on"
+            }
+          ],
+          "title": "算法的时间与空间复杂度",
+          "nav": {
+            "path": "/algorithm",
+            "title": "力扣"
+          }
+        },
+        "title": "算法的时间与空间复杂度"
+      },
+      {
         "path": "/algorithm/leecode",
         "component": require('../../docs/algorithm/leecode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/leecode.md",
-          "updatedTime": 1606544438000,
+          "updatedTime": 1606544679000,
           "nav": {
             "title": "力扣",
             "path": "/algorithm"
@@ -1124,7 +1168,7 @@ export function getRoutes() {
         "path": "/algorithm",
         "meta": {},
         "exact": true,
-        "redirect": "/algorithm/leecode"
+        "redirect": "/algorithm/algorithm-complexity"
       },
       {
         "path": "/javascript",
