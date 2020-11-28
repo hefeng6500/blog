@@ -82,7 +82,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/leecode.md",
-          "updatedTime": 1606472874543,
+          "updatedTime": 1606483956000,
           "nav": {
             "title": "力扣",
             "path": "/algorithm"
@@ -107,6 +107,21 @@ export function getRoutes() {
               "depth": 3,
               "value": "哈希表",
               "heading": "哈希表"
+            },
+            {
+              "depth": 2,
+              "value": "7. 整数反转",
+              "heading": "7-整数反转"
+            },
+            {
+              "depth": 3,
+              "value": "反转字符串",
+              "heading": "反转字符串"
+            },
+            {
+              "depth": 3,
+              "value": "数学法",
+              "heading": "数学法"
             }
           ],
           "title": "🔥LeetCode 热题 HOT 100"
