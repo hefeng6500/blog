@@ -82,7 +82,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/leecode.md",
-          "updatedTime": 1606536115000,
+          "updatedTime": 1606544438000,
           "nav": {
             "title": "力扣",
             "path": "/algorithm"
