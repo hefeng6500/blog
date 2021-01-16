@@ -9,33 +9,10 @@ export function getRoutes() {
   {
     "path": "/",
     "component": (props) => require('react').createElement(require('../../node_modules/_@umijs_preset-dumi@1.0.34@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"*":{"/getting-started":[{"path":"/getting-started","title":"快速上手","meta":{}}],"*":[{"path":"/","title":"Index","meta":{}}],"/algorithm":[{"path":"/algorithm/algorithm-complexity","title":"算法的时间与空间复杂度","meta":{}},{"path":"/algorithm/leecode","title":"🔥LeetCode 热题 HOT 100","meta":{}}],"/design-patterns":[{"path":"/design-patterns","title":"设计模式","meta":{}},{"path":"/design-patterns/adapter-mode","title":"适配器模式","meta":{}},{"path":"/design-patterns/decorator-mode","title":"装饰器模式","meta":{}},{"path":"/design-patterns/factory-mode","title":"简单工厂模式","meta":{}},{"path":"/design-patterns/observer-mode","title":"观察者模式","meta":{}},{"path":"/design-patterns/prototype-mode","title":"原型模式","meta":{}},{"path":"/design-patterns/publish-subscribe-mode","title":"发布订阅模式","meta":{}},{"path":"/design-patterns/singleton-mode","title":"单例模式","meta":{}},{"path":"/design-patterns/strategy-mode","title":"策略模式","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}],"/javascript":[{"path":"/javascript/higher-order function","title":"高阶函数","meta":{}},{"path":"/javascript/prototype","title":"原型、原型链和继承","meta":{}}],"/micro-frontends":[{"path":"/micro-frontends","title":"Index","meta":{}},{"path":"/micro-frontends/system-js","title":"SystemJS 实战教程","meta":{}}],"/performance":[{"path":"/performance","title":"性能优化总括","meta":{}},{"path":"/performance/time-slice","title":"如何高性能的渲染十万条数据(时间分片)","meta":{}},{"path":"/performance/virtual-scroll","title":"如何高性能的渲染十万条数据(虚拟列表)","meta":{}}],"/react":[{"path":"/react","title":"React 进阶","meta":{}},{"path":"/react/react-source","title":"React 源码","meta":{}}],"/vue":[{"path":"/vue/virtual-dom","title":"虚拟 DOM","meta":{}},{"path":"/vue/vue-i18n","title":"vue-i18n","meta":{}},{"path":"/vue/vue3","title":"vue3-app","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"快速上手","order":1,"path":"/getting-started"},{"path":"/vue","title":"Vue"},{"path":"/react","title":"React"},{"path":"/algorithm","title":"力扣"},{"path":"/interview","title":"面试题"},{"path":"/javascript","title":"Javascript"},{"title":"性能优化","path":"/performance"},{"path":"/micro-frontends","title":"Micro-frontends"},{"path":"/design-patterns","title":"设计模式"}]},"title":"hefeng6500 的博客","desc":"hefeng6500 的博客","mode":"site"},
+      ...{"menus":{"*":{"*":[{"path":"/","title":"Index","meta":{}}],"/algorithm":[{"path":"/algorithm/algorithm-complexity","title":"算法的时间与空间复杂度","meta":{}},{"path":"/algorithm/leecode","title":"🔥LeetCode 热题 HOT 100","meta":{}}],"/articles":[{"path":"/articles/article1","title":"使用 GitHub Actions 实现 Dumi 博客自动化部署","meta":{}}],"/design-patterns":[{"path":"/design-patterns","title":"设计模式","meta":{}},{"path":"/design-patterns/adapter-mode","title":"适配器模式","meta":{}},{"path":"/design-patterns/decorator-mode","title":"装饰器模式","meta":{}},{"path":"/design-patterns/factory-mode","title":"简单工厂模式","meta":{}},{"path":"/design-patterns/observer-mode","title":"观察者模式","meta":{}},{"path":"/design-patterns/prototype-mode","title":"原型模式","meta":{}},{"path":"/design-patterns/publish-subscribe-mode","title":"发布订阅模式","meta":{}},{"path":"/design-patterns/singleton-mode","title":"单例模式","meta":{}},{"path":"/design-patterns/strategy-mode","title":"策略模式","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}],"/javascript":[{"path":"/javascript/higher-order function","title":"高阶函数","meta":{}},{"path":"/javascript/prototype","title":"原型、原型链和继承","meta":{}}],"/learning":[{"path":"/learning","title":"Learning","meta":{}},{"path":"/learning/2021learning-plan","title":"2021 年学习记录","meta":{}},{"path":"/learning/collection","title":"收集的学习资料","meta":{}}],"/micro-frontends":[{"path":"/micro-frontends","title":"Index","meta":{}},{"path":"/micro-frontends/system-js","title":"SystemJS 实战教程","meta":{}}],"/performance":[{"path":"/performance","title":"性能优化总括","meta":{}},{"path":"/performance/time-slice","title":"如何高性能的渲染十万条数据(时间分片)","meta":{}},{"path":"/performance/virtual-scroll","title":"如何高性能的渲染十万条数据(虚拟列表)","meta":{}}],"/react":[{"path":"/react","title":"React 进阶","meta":{}},{"path":"/react/react-source","title":"React 源码","meta":{}}],"/vue":[{"path":"/vue/virtual-dom","title":"虚拟 DOM","meta":{}},{"path":"/vue/vue-i18n","title":"vue-i18n","meta":{}},{"path":"/vue/vue3","title":"vue3-app","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"博客","order":1,"path":"/articles"},{"path":"/vue","title":"Vue"},{"path":"/react","title":"React"},{"path":"/learning","title":"Learning"},{"path":"/algorithm","title":"力扣"},{"path":"/interview","title":"面试题"},{"path":"/javascript","title":"Javascript"},{"title":"性能优化","path":"/performance"},{"path":"/micro-frontends","title":"Micro-frontends"},{"path":"/design-patterns","title":"设计模式"}]},"title":"hefeng6500 的博客","desc":"hefeng6500 的博客","mode":"site"},
       ...props,
     }),
     "routes": [
-      {
-        "path": "/getting-started",
-        "component": require('../../docs/getting-started.md').default,
-        "exact": true,
-        "meta": {
-          "filePath": "docs/getting-started.md",
-          "updatedTime": 1606547446000,
-          "nav": {
-            "title": "快速上手",
-            "order": 1,
-            "path": "/getting-started"
-          },
-          "slugs": [
-            {
-              "depth": 1,
-              "value": "快速上手",
-              "heading": "快速上手"
-            }
-          ],
-          "title": "快速上手"
-        },
-        "title": "快速上手"
-      },
       {
         "path": "/",
         "component": require('../../docs/index.md').default,
@@ -214,6 +191,59 @@ export function getRoutes() {
           "title": "🔥LeetCode 热题 HOT 100"
         },
         "title": "🔥LeetCode 热题 HOT 100"
+      },
+      {
+        "path": "/articles/article1",
+        "component": require('../../docs/articles/article1.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/articles/article1.md",
+          "updatedTime": 1610803017063,
+          "nav": {
+            "title": "博客",
+            "order": 1,
+            "path": "/articles"
+          },
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "使用 GitHub Actions 实现 Dumi 博客自动化部署",
+              "heading": "使用-github-actions-实现-dumi-博客自动化部署"
+            },
+            {
+              "depth": 2,
+              "value": "一、创建静态站点脚手架",
+              "heading": "一、创建静态站点脚手架"
+            },
+            {
+              "depth": 2,
+              "value": "二、创建 github 仓库",
+              "heading": "二、创建-github-仓库"
+            },
+            {
+              "depth": 3,
+              "value": "1、创建 blog 仓库",
+              "heading": "1、创建-blog-仓库"
+            },
+            {
+              "depth": 3,
+              "value": "2、创建 [username].github.io 仓库",
+              "heading": "2、创建-usernamegithubio-仓库"
+            },
+            {
+              "depth": 2,
+              "value": "三、Github生成访问令牌",
+              "heading": "三、github生成访问令牌"
+            },
+            {
+              "depth": 2,
+              "value": "三、配置 github Actions 流水线",
+              "heading": "三、配置-github-actions-流水线"
+            }
+          ],
+          "title": "使用 GitHub Actions 实现 Dumi 博客自动化部署"
+        },
+        "title": "使用 GitHub Actions 实现 Dumi 博客自动化部署"
       },
       {
         "path": "/design-patterns/adapter-mode",
@@ -617,12 +647,93 @@ export function getRoutes() {
         "title": "原型、原型链和继承"
       },
       {
+        "path": "/learning/2021learning-plan",
+        "component": require('../../docs/learning/2021learning-plan.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/learning/2021learning-plan.md",
+          "updatedTime": 1610796752910,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "2021 年学习记录",
+              "heading": "2021-年学习记录"
+            }
+          ],
+          "title": "2021 年学习记录",
+          "nav": {
+            "path": "/learning",
+            "title": "Learning"
+          }
+        },
+        "title": "2021 年学习记录"
+      },
+      {
+        "path": "/learning/collection",
+        "component": require('../../docs/learning/collection.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/learning/collection.md",
+          "updatedTime": 1610797093092,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "收集的学习资料",
+              "heading": "收集的学习资料"
+            },
+            {
+              "depth": 2,
+              "value": "Vue 系列",
+              "heading": "vue-系列"
+            },
+            {
+              "depth": 2,
+              "value": "React 系列",
+              "heading": "react-系列"
+            },
+            {
+              "depth": 2,
+              "value": "博客系列",
+              "heading": "博客系列"
+            }
+          ],
+          "title": "收集的学习资料",
+          "nav": {
+            "path": "/learning",
+            "title": "Learning"
+          }
+        },
+        "title": "收集的学习资料"
+      },
+      {
+        "path": "/learning",
+        "component": require('../../docs/learning/index.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/learning/index.md",
+          "updatedTime": 1610796705251,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "Learning",
+              "heading": "learning"
+            }
+          ],
+          "title": "Learning",
+          "nav": {
+            "path": "/learning",
+            "title": "Learning"
+          }
+        },
+        "title": "Learning"
+      },
+      {
         "path": "/micro-frontends",
         "component": require('../../docs/Micro-frontends/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Micro-frontends/index.md",
-          "updatedTime": 1609046576358,
+          "updatedTime": 1610618242000,
           "slugs": [],
           "title": "Index",
           "nav": {
@@ -638,7 +749,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/Micro-frontends/SystemJS.md",
-          "updatedTime": 1609056567409,
+          "updatedTime": 1610618242000,
           "slugs": [
             {
               "depth": 1,
@@ -1260,6 +1371,14 @@ export function getRoutes() {
         "meta": {},
         "exact": true,
         "redirect": "/algorithm/algorithm-complexity"
+      },
+      {
+        "path": "/articles",
+        "meta": {
+          "order": 1
+        },
+        "exact": true,
+        "redirect": "/articles/article1"
       },
       {
         "path": "/javascript",
