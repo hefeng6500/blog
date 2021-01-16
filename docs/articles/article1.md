@@ -77,7 +77,7 @@ github -> setting -> Developer settings -> Personal access tokens -> Generate ne
 ![generate-new-token](../assets/generate-new-token.png)
 
 
-## 三、配置 github Actions 流水线
+## 四、配置 github Actions 流水线
 
 设置 blog 的 DEPLOY_KEY
 
@@ -146,6 +146,13 @@ jobs:
 - REPOSITORY_NAME：[username]/[username].github.io
 - FOLDER: 发布的包文件夹
 - TARGET_FOLDER： 发布到哪个目录下
+
+
+## 五、触发 CI
+
+后续只要 push 或者 pull request 代码到 main，都会触发 CI 推送代码到 [username].github.io 仓库
+
+![github-actions](../assets/deploy.png)
 
 
 参考： https://www.codenong.com/j5ec65e7df265da771a1fc356/

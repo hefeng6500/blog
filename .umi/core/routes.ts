@@ -198,7 +198,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/articles/article1.md",
-          "updatedTime": 1610803017063,
+          "updatedTime": 1610803064000,
           "nav": {
             "title": "博客",
             "order": 1,
@@ -237,8 +237,13 @@ export function getRoutes() {
             },
             {
               "depth": 2,
-              "value": "三、配置 github Actions 流水线",
-              "heading": "三、配置-github-actions-流水线"
+              "value": "四、配置 github Actions 流水线",
+              "heading": "四、配置-github-actions-流水线"
+            },
+            {
+              "depth": 2,
+              "value": "五、触发 CI",
+              "heading": "五、触发-ci"
             }
           ],
           "title": "使用 GitHub Actions 实现 Dumi 博客自动化部署"
