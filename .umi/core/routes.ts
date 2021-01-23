@@ -9,7 +9,7 @@ export function getRoutes() {
   {
     "path": "/",
     "component": (props) => require('react').createElement(require('../../node_modules/_@umijs_preset-dumi@1.0.34@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"*":{"*":[{"path":"/","title":"Index","meta":{}}],"/algorithm":[{"path":"/algorithm/algorithm-complexity","title":"算法的时间与空间复杂度","meta":{}},{"path":"/algorithm/leecode","title":"🔥LeetCode 热题 HOT 100","meta":{}}],"/articles":[{"path":"/articles/article1","title":"使用 GitHub Actions 实现 Dumi 博客自动化部署","meta":{}}],"/design-patterns":[{"path":"/design-patterns","title":"设计模式","meta":{}},{"path":"/design-patterns/adapter-mode","title":"适配器模式","meta":{}},{"path":"/design-patterns/decorator-mode","title":"装饰器模式","meta":{}},{"path":"/design-patterns/factory-mode","title":"简单工厂模式","meta":{}},{"path":"/design-patterns/observer-mode","title":"观察者模式","meta":{}},{"path":"/design-patterns/prototype-mode","title":"原型模式","meta":{}},{"path":"/design-patterns/publish-subscribe-mode","title":"发布订阅模式","meta":{}},{"path":"/design-patterns/singleton-mode","title":"单例模式","meta":{}},{"path":"/design-patterns/strategy-mode","title":"策略模式","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}],"/javascript":[{"path":"/javascript/higher-order function","title":"高阶函数","meta":{}},{"path":"/javascript/prototype","title":"原型、原型链和继承","meta":{}}],"/learning":[{"path":"/learning","title":"Learning","meta":{}},{"path":"/learning/2021learning-plan","title":"2021 年学习记录","meta":{}},{"path":"/learning/collection","title":"收集的学习资料","meta":{}}],"/micro-frontends":[{"path":"/micro-frontends","title":"Index","meta":{}},{"path":"/micro-frontends/system-js","title":"SystemJS 实战教程","meta":{}}],"/performance":[{"path":"/performance","title":"性能优化总括","meta":{}},{"path":"/performance/time-slice","title":"如何高性能的渲染十万条数据(时间分片)","meta":{}},{"path":"/performance/virtual-scroll","title":"如何高性能的渲染十万条数据(虚拟列表)","meta":{}}],"/react":[{"path":"/react","title":"React 进阶","meta":{}},{"path":"/react/react-source","title":"React 源码","meta":{}}],"/vue":[{"path":"/vue/virtual-dom","title":"虚拟 DOM","meta":{}},{"path":"/vue/vue-i18n","title":"vue-i18n","meta":{}},{"path":"/vue/vue3","title":"vue3-app","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"博客","order":1,"path":"/articles"},{"path":"/vue","title":"Vue"},{"path":"/react","title":"React"},{"path":"/learning","title":"Learning"},{"path":"/algorithm","title":"力扣"},{"path":"/interview","title":"面试题"},{"path":"/javascript","title":"Javascript"},{"title":"性能优化","path":"/performance"},{"path":"/micro-frontends","title":"Micro-frontends"},{"path":"/design-patterns","title":"设计模式"}]},"title":"hefeng6500 的博客","desc":"hefeng6500 的博客","mode":"site"},
+      ...{"menus":{"*":{"*":[{"path":"/","title":"Index","meta":{}}],"/algorithm":[{"path":"/algorithm/algorithm-complexity","title":"算法的时间与空间复杂度","meta":{}},{"path":"/algorithm/leecode","title":"🔥LeetCode 热题 HOT 100","meta":{}}],"/articles":[{"path":"/articles/article1","title":"使用 GitHub Actions 实现 Dumi 博客自动化部署","meta":{}},{"path":"/articles/docker","title":"[手把手系列之]Docker 部署 vue 项目","meta":{}},{"path":"/articles/front-end-knowledge-system-map","title":"前端知识体系图谱","meta":{}},{"path":"/articles/learning-plan","title":"学习计划","meta":{}}],"/design-patterns":[{"path":"/design-patterns","title":"设计模式","meta":{}},{"path":"/design-patterns/adapter-mode","title":"适配器模式","meta":{}},{"path":"/design-patterns/decorator-mode","title":"装饰器模式","meta":{}},{"path":"/design-patterns/factory-mode","title":"简单工厂模式","meta":{}},{"path":"/design-patterns/observer-mode","title":"观察者模式","meta":{}},{"path":"/design-patterns/prototype-mode","title":"原型模式","meta":{}},{"path":"/design-patterns/publish-subscribe-mode","title":"发布订阅模式","meta":{}},{"path":"/design-patterns/singleton-mode","title":"单例模式","meta":{}},{"path":"/design-patterns/strategy-mode","title":"策略模式","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}],"/javascript":[{"path":"/javascript/higher-order function","title":"高阶函数","meta":{}},{"path":"/javascript/prototype","title":"原型、原型链和继承","meta":{}}],"/learning":[{"path":"/learning","title":"Learning","meta":{}},{"path":"/learning/2021learning-plan","title":"2021 年学习记录","meta":{}},{"path":"/learning/collection","title":"收集的学习资料","meta":{}}],"/micro-frontends":[{"path":"/micro-frontends","title":"Index","meta":{}},{"path":"/micro-frontends/system-js","title":"SystemJS 实战教程","meta":{}}],"/performance":[{"path":"/performance","title":"性能优化总括","meta":{}},{"path":"/performance/time-slice","title":"如何高性能的渲染十万条数据(时间分片)","meta":{}},{"path":"/performance/virtual-scroll","title":"如何高性能的渲染十万条数据(虚拟列表)","meta":{}}],"/react":[{"path":"/react","title":"React 进阶","meta":{}},{"path":"/react/react-source","title":"React 源码","meta":{}}],"/vue":[{"path":"/vue/virtual-dom","title":"虚拟 DOM","meta":{}},{"path":"/vue/vue-i18n","title":"vue-i18n","meta":{}},{"path":"/vue/vue3","title":"vue3-app","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"博客","order":1,"path":"/articles"},{"path":"/vue","title":"Vue"},{"path":"/react","title":"React"},{"path":"/learning","title":"Learning"},{"path":"/algorithm","title":"力扣"},{"path":"/interview","title":"面试题"},{"path":"/javascript","title":"Javascript"},{"title":"性能优化","path":"/performance"},{"path":"/micro-frontends","title":"Micro-frontends"},{"path":"/design-patterns","title":"设计模式"}]},"title":"hefeng6500 的博客","desc":"hefeng6500 的博客","mode":"site"},
       ...props,
     }),
     "routes": [
@@ -198,7 +198,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/articles/article1.md",
-          "updatedTime": 1610803064000,
+          "updatedTime": 1610803381000,
           "nav": {
             "title": "博客",
             "order": 1,
@@ -249,6 +249,222 @@ export function getRoutes() {
           "title": "使用 GitHub Actions 实现 Dumi 博客自动化部署"
         },
         "title": "使用 GitHub Actions 实现 Dumi 博客自动化部署"
+      },
+      {
+        "path": "/articles/docker",
+        "component": require('../../docs/articles/docker.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/articles/docker.md",
+          "updatedTime": 1611409970199,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "[手把手系列之]Docker 部署 vue 项目",
+              "heading": "手把手系列之docker-部署-vue-项目"
+            },
+            {
+              "depth": 2,
+              "value": "Docker 部署 vue 项目",
+              "heading": "docker-部署-vue-项目"
+            },
+            {
+              "depth": 2,
+              "value": "1.写在前面：",
+              "heading": "1写在前面："
+            },
+            {
+              "depth": 2,
+              "value": "2.具体实现：",
+              "heading": "2具体实现："
+            },
+            {
+              "depth": 2,
+              "value": "3 创建 vue 应用",
+              "heading": "3-创建-vue-应用"
+            },
+            {
+              "depth": 3,
+              "value": "3.1 vue cli 创建一个vue项目",
+              "heading": "31-vue-cli-创建一个vue项目"
+            },
+            {
+              "depth": 3,
+              "value": "3.2 改写",
+              "heading": "32-改写"
+            },
+            {
+              "depth": 3,
+              "value": "3.3 构建vue项目",
+              "heading": "33-构建vue项目"
+            },
+            {
+              "depth": 2,
+              "value": "4 构建vue应用镜像",
+              "heading": "4-构建vue应用镜像"
+            },
+            {
+              "depth": 3,
+              "value": "4.1 获取 nginx 镜像",
+              "heading": "41-获取-nginx-镜像"
+            },
+            {
+              "depth": 3,
+              "value": "4.2 创建 nginx config配置文件",
+              "heading": "42-创建-nginx-config配置文件"
+            },
+            {
+              "depth": 3,
+              "value": "4.3 创建 Dockerfile 文件",
+              "heading": "43-创建-dockerfile-文件"
+            },
+            {
+              "depth": 3,
+              "value": "4.4 基于该Dockerfile构建vue应用镜像",
+              "heading": "44-基于该dockerfile构建vue应用镜像"
+            },
+            {
+              "depth": 3,
+              "value": "4.5 启动 vue app 容器",
+              "heading": "45-启动-vue-app-容器"
+            },
+            {
+              "depth": 2,
+              "value": "5 接口服务",
+              "heading": "5-接口服务"
+            },
+            {
+              "depth": 3,
+              "value": "5.1 express 服务",
+              "heading": "51-express-服务"
+            },
+            {
+              "depth": 3,
+              "value": "5.2 获取 node 镜像",
+              "heading": "52-获取-node-镜像"
+            },
+            {
+              "depth": 3,
+              "value": "5.3 编写 Dockerfile 将 express 应用 docker 化",
+              "heading": "53-编写-dockerfile-将-express-应用-docker-化"
+            },
+            {
+              "depth": 3,
+              "value": "5.4 构建 nodewebserver 镜像",
+              "heading": "54-构建-nodewebserver-镜像"
+            },
+            {
+              "depth": 3,
+              "value": "5.5 启动 nodeserver 容器",
+              "heading": "55-启动-nodeserver-容器"
+            },
+            {
+              "depth": 2,
+              "value": "6. 跨域转发",
+              "heading": "6-跨域转发"
+            },
+            {
+              "depth": 3,
+              "value": "6.1 查看 nodeserver 容器的 ip 地址：",
+              "heading": "61-查看-nodeserver-容器的-ip-地址："
+            },
+            {
+              "depth": 3,
+              "value": "6.2 修改 nginx 配置",
+              "heading": "62-修改-nginx-配置"
+            },
+            {
+              "depth": 2,
+              "value": "7. 改进",
+              "heading": "7-改进"
+            },
+            {
+              "depth": 3,
+              "value": "7.1 修改 Dockerfile 文件",
+              "heading": "71-修改-dockerfile-文件"
+            },
+            {
+              "depth": 3,
+              "value": "7.2 重新运行vue应用容器",
+              "heading": "72-重新运行vue应用容器"
+            },
+            {
+              "depth": 3,
+              "value": "7.3 配置负载均衡",
+              "heading": "73-配置负载均衡"
+            },
+            {
+              "depth": 2,
+              "value": "8. 写在后面",
+              "heading": "8-写在后面"
+            },
+            {
+              "depth": 2,
+              "value": "9 总结",
+              "heading": "9-总结"
+            }
+          ],
+          "title": "[手把手系列之]Docker 部署 vue 项目",
+          "nav": {
+            "path": "/articles",
+            "title": "博客"
+          }
+        },
+        "title": "[手把手系列之]Docker 部署 vue 项目"
+      },
+      {
+        "path": "/articles/front-end-knowledge-system-map",
+        "component": require('../../docs/articles/front-end-knowledge-system-map.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/articles/front-end-knowledge-system-map.md",
+          "updatedTime": 1610805953000,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "前端知识体系图谱",
+              "heading": "前端知识体系图谱"
+            }
+          ],
+          "title": "前端知识体系图谱",
+          "nav": {
+            "path": "/articles",
+            "title": "博客"
+          }
+        },
+        "title": "前端知识体系图谱"
+      },
+      {
+        "path": "/articles/learning-plan",
+        "component": require('../../docs/articles/learning-plan.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/articles/learning-plan.md",
+          "updatedTime": 1610805904000,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "学习计划",
+              "heading": "学习计划"
+            },
+            {
+              "depth": 2,
+              "value": "2021.01",
+              "heading": "202101"
+            },
+            {
+              "depth": 2,
+              "value": "2020.02",
+              "heading": "202002"
+            }
+          ],
+          "title": "学习计划",
+          "nav": {
+            "path": "/articles",
+            "title": "博客"
+          }
+        },
+        "title": "学习计划"
       },
       {
         "path": "/design-patterns/adapter-mode",
@@ -657,7 +873,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/learning/2021learning-plan.md",
-          "updatedTime": 1610796752910,
+          "updatedTime": 1610803064000,
           "slugs": [
             {
               "depth": 1,
@@ -679,7 +895,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/learning/collection.md",
-          "updatedTime": 1610797093092,
+          "updatedTime": 1610803064000,
           "slugs": [
             {
               "depth": 1,
@@ -716,7 +932,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/learning/index.md",
-          "updatedTime": 1610796705251,
+          "updatedTime": 1610803064000,
           "slugs": [
             {
               "depth": 1,
