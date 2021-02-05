@@ -256,7 +256,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/articles/docker.md",
-          "updatedTime": 1611409970199,
+          "updatedTime": 1611412749000,
           "slugs": [
             {
               "depth": 1,
@@ -558,6 +558,11 @@ export function getRoutes() {
               "depth": 1,
               "value": "设计模式",
               "heading": "设计模式"
+            },
+            {
+              "depth": 2,
+              "value": "面向对象",
+              "heading": "面向对象"
             }
           ],
           "title": "设计模式"
