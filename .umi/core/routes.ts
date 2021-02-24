@@ -538,8 +538,8 @@ export function getRoutes() {
             },
             {
               "depth": 3,
-              "value": "Vue源码分析",
-              "heading": "vue源码分析"
+              "value": "Vue 源码分析",
+              "heading": "vue-源码分析"
             }
           ],
           "title": "面试知识点",
