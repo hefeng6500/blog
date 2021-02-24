@@ -1,21 +1,50 @@
 // @ts-nocheck
 import React from 'react';
-import { ApplyPluginsType } from 'C:/workplace/dumi-doc/node_modules/_@umijs_runtime@3.2.24@@umijs/runtime';
+import { ApplyPluginsType } from 'C:/workpalce/blog/node_modules/@umijs/runtime';
 import * as umiExports from './umiExports';
 import { plugin } from './plugin';
 
 export function getRoutes() {
   const routes = [
   {
+    "path": "/~demos/:uuid",
+    "layout": false,
+    "wrappers": [require('C:/workpalce/blog/node_modules/@umijs/preset-dumi/lib/theme/layout').default],
+    "component": (props) => {
+      const React = require('react');
+      const renderArgs = require('../../node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs').default(props);
+
+      switch (renderArgs.length) {
+        case 1:
+          // render demo directly
+          return renderArgs[0];
+
+        case 2:
+          // render demo with previewer
+          return React.createElement(
+            require('dumi-theme-default/src/builtins/Previewer.tsx').default,
+            renderArgs[0],
+            renderArgs[1],
+          );
+
+        default:
+          return `Demo ${uuid} not found :(`;
+      }
+    }
+  },
+  {
+    "path": "/_demos/:uuid",
+    "redirect": "/~demos/:uuid"
+  },
+  {
+    "__dumiRoot": true,
+    "layout": false,
     "path": "/",
-    "component": (props) => require('react').createElement(require('../../node_modules/_@umijs_preset-dumi@1.0.34@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"*":{"*":[{"path":"/","title":"Index","meta":{}}],"/algorithm":[{"path":"/algorithm/algorithm-complexity","title":"算法的时间与空间复杂度","meta":{}},{"path":"/algorithm/leecode","title":"🔥LeetCode 热题 HOT 100","meta":{}}],"/articles":[{"path":"/articles/article1","title":"使用 GitHub Actions 实现 Dumi 博客自动化部署","meta":{}},{"path":"/articles/docker","title":"[手把手系列之]Docker 部署 vue 项目","meta":{}},{"path":"/articles/front-end-knowledge-system-map","title":"前端知识体系图谱","meta":{}},{"path":"/articles/learning-plan","title":"学习计划","meta":{}}],"/design-patterns":[{"path":"/design-patterns","title":"设计模式","meta":{}},{"path":"/design-patterns/adapter-mode","title":"适配器模式","meta":{}},{"path":"/design-patterns/decorator-mode","title":"装饰器模式","meta":{}},{"path":"/design-patterns/factory-mode","title":"简单工厂模式","meta":{}},{"path":"/design-patterns/observer-mode","title":"观察者模式","meta":{}},{"path":"/design-patterns/prototype-mode","title":"原型模式","meta":{}},{"path":"/design-patterns/publish-subscribe-mode","title":"发布订阅模式","meta":{}},{"path":"/design-patterns/singleton-mode","title":"单例模式","meta":{}},{"path":"/design-patterns/strategy-mode","title":"策略模式","meta":{}}],"/interview":[{"path":"/interview","title":"面试题","meta":{}},{"path":"/interview/html","title":"html","meta":{}}],"/javascript":[{"path":"/javascript/higher-order function","title":"高阶函数","meta":{}},{"path":"/javascript/prototype","title":"原型、原型链和继承","meta":{}}],"/learning":[{"path":"/learning","title":"Learning","meta":{}},{"path":"/learning/2021learning-plan","title":"2021 年学习记录","meta":{}},{"path":"/learning/collection","title":"收集的学习资料","meta":{}}],"/micro-frontends":[{"path":"/micro-frontends","title":"Index","meta":{}},{"path":"/micro-frontends/system-js","title":"SystemJS 实战教程","meta":{}}],"/performance":[{"path":"/performance","title":"性能优化总括","meta":{}},{"path":"/performance/time-slice","title":"如何高性能的渲染十万条数据(时间分片)","meta":{}},{"path":"/performance/virtual-scroll","title":"如何高性能的渲染十万条数据(虚拟列表)","meta":{}}],"/react":[{"path":"/react","title":"React 进阶","meta":{}},{"path":"/react/react-source","title":"React 源码","meta":{}}],"/vue":[{"path":"/vue/virtual-dom","title":"虚拟 DOM","meta":{}},{"path":"/vue/vue-i18n","title":"vue-i18n","meta":{}},{"path":"/vue/vue3","title":"vue3-app","meta":{}}]}},"locales":[],"navs":{"*":[{"title":"博客","order":1,"path":"/articles"},{"path":"/vue","title":"Vue"},{"path":"/react","title":"React"},{"path":"/learning","title":"Learning"},{"path":"/algorithm","title":"力扣"},{"path":"/interview","title":"面试题"},{"path":"/javascript","title":"Javascript"},{"title":"性能优化","path":"/performance"},{"path":"/micro-frontends","title":"Micro-frontends"},{"path":"/design-patterns","title":"设计模式"}]},"title":"hefeng6500 的博客","desc":"hefeng6500 的博客","mode":"site"},
-      ...props,
-    }),
+    "wrappers": [require('C:/workpalce/blog/node_modules/@umijs/preset-dumi/lib/theme/layout').default, require('C:/workpalce/blog/node_modules/dumi-theme-default/src/layout.tsx').default],
     "routes": [
       {
         "path": "/",
-        "component": require('../../docs/index.md').default,
+        "component": require('C:/workpalce/blog/docs/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/index.md",
@@ -47,7 +76,7 @@ export function getRoutes() {
               "desc": "<div class=\"markdown\"><p>Node.js、服务端渲染，持续集成/部署</p></div>"
             }
           ],
-          "footer": "<div class=\"markdown\"><p>Open-source MIT Licensed | Copyright © 2020<br />Powered by <a href=\"https://d.umijs.org\" target=\"_blank\" rel=\"noopener noreferrer\">dumi<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden x=\"0px\" y=\"0px\" viewBox=\"0 0 100 100\" width=\"15\" height=\"15\" class=\"__dumi-default-external-link-icon\"><path fill=\"currentColor\" d=\"M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z\"></path><polygon fill=\"currentColor\" points=\"45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9\"></polygon></svg></a></p></div>",
+          "footer": "<div class=\"markdown\"><p>Open-source MIT Licensed | Copyright © 2020<br />Powered by <a href=\"https://d.umijs.org/\" target=\"_blank\">dumi<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"\" x=\"0px\" y=\"0px\" viewBox=\"0 0 100 100\" width=\"15\" height=\"15\" class=\"__dumi-default-external-link-icon\"><path fill=\"currentColor\" d=\"M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z\"></path><polygon fill=\"currentColor\" points=\"45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9\"></polygon></svg></a></p></div>",
           "slugs": [],
           "title": "Index"
         },
@@ -55,7 +84,7 @@ export function getRoutes() {
       },
       {
         "path": "/algorithm/algorithm-complexity",
-        "component": require('../../docs/algorithm/algorithm-complexity.md').default,
+        "component": require('C:/workpalce/blog/docs/algorithm/algorithm-complexity.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/algorithm-complexity.md",
@@ -122,7 +151,7 @@ export function getRoutes() {
       },
       {
         "path": "/algorithm/leecode",
-        "component": require('../../docs/algorithm/leecode.md').default,
+        "component": require('C:/workpalce/blog/docs/algorithm/leecode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/leecode.md",
@@ -194,7 +223,7 @@ export function getRoutes() {
       },
       {
         "path": "/articles/article1",
-        "component": require('../../docs/articles/article1.md').default,
+        "component": require('C:/workpalce/blog/docs/articles/article1.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/articles/article1.md",
@@ -252,7 +281,7 @@ export function getRoutes() {
       },
       {
         "path": "/articles/docker",
-        "component": require('../../docs/articles/docker.md').default,
+        "component": require('C:/workpalce/blog/docs/articles/docker.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/articles/docker.md",
@@ -414,7 +443,7 @@ export function getRoutes() {
       },
       {
         "path": "/articles/front-end-knowledge-system-map",
-        "component": require('../../docs/articles/front-end-knowledge-system-map.md').default,
+        "component": require('C:/workpalce/blog/docs/articles/front-end-knowledge-system-map.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/articles/front-end-knowledge-system-map.md",
@@ -435,8 +464,95 @@ export function getRoutes() {
         "title": "前端知识体系图谱"
       },
       {
+        "path": "/articles/interview-knowledge",
+        "component": require('C:/workpalce/blog/docs/articles/interview-knowledge.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/articles/interview-knowledge.md",
+          "updatedTime": null,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "面试知识点",
+              "heading": "面试知识点"
+            },
+            {
+              "depth": 2,
+              "value": "计算机基础",
+              "heading": "计算机基础"
+            },
+            {
+              "depth": 2,
+              "value": "前端基础 HTML",
+              "heading": "前端基础-html"
+            },
+            {
+              "depth": 2,
+              "value": "前端技术 CSS",
+              "heading": "前端技术-css"
+            },
+            {
+              "depth": 3,
+              "value": "浏览器页面渲染",
+              "heading": "浏览器页面渲染"
+            },
+            {
+              "depth": 2,
+              "value": "前端技术 javaScript",
+              "heading": "前端技术-javascript"
+            },
+            {
+              "depth": 2,
+              "value": "基础 javaScript",
+              "heading": "基础-javascript"
+            },
+            {
+              "depth": 2,
+              "value": "高阶 javaScript",
+              "heading": "高阶-javascript"
+            },
+            {
+              "depth": 2,
+              "value": "算法",
+              "heading": "算法"
+            },
+            {
+              "depth": 2,
+              "value": "设计模式",
+              "heading": "设计模式"
+            },
+            {
+              "depth": 2,
+              "value": "前端工程化",
+              "heading": "前端工程化"
+            },
+            {
+              "depth": 2,
+              "value": "webpack",
+              "heading": "webpack"
+            },
+            {
+              "depth": 2,
+              "value": "Vue",
+              "heading": "vue"
+            },
+            {
+              "depth": 3,
+              "value": "Vue源码分析",
+              "heading": "vue源码分析"
+            }
+          ],
+          "title": "面试知识点",
+          "nav": {
+            "path": "/articles",
+            "title": "博客"
+          }
+        },
+        "title": "面试知识点"
+      },
+      {
         "path": "/articles/learning-plan",
-        "component": require('../../docs/articles/learning-plan.md').default,
+        "component": require('C:/workpalce/blog/docs/articles/learning-plan.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/articles/learning-plan.md",
@@ -468,7 +584,7 @@ export function getRoutes() {
       },
       {
         "path": "/design-patterns/adapter-mode",
-        "component": require('../../docs/design-patterns/adapter-mode.md').default,
+        "component": require('C:/workpalce/blog/docs/design-patterns/adapter-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/adapter-mode.md",
@@ -490,7 +606,7 @@ export function getRoutes() {
       },
       {
         "path": "/design-patterns/decorator-mode",
-        "component": require('../../docs/design-patterns/decorator-mode.md').default,
+        "component": require('C:/workpalce/blog/docs/design-patterns/decorator-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/decorator-mode.md",
@@ -517,7 +633,7 @@ export function getRoutes() {
       },
       {
         "path": "/design-patterns/factory-mode",
-        "component": require('../../docs/design-patterns/factory-mode.md').default,
+        "component": require('C:/workpalce/blog/docs/design-patterns/factory-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/factory-mode.md",
@@ -544,11 +660,11 @@ export function getRoutes() {
       },
       {
         "path": "/design-patterns",
-        "component": require('../../docs/design-patterns/index.md').default,
+        "component": require('C:/workpalce/blog/docs/design-patterns/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/index.md",
-          "updatedTime": 1606315224000,
+          "updatedTime": 1612518169000,
           "nav": {
             "title": "设计模式",
             "path": "/design-patterns"
@@ -571,7 +687,7 @@ export function getRoutes() {
       },
       {
         "path": "/design-patterns/observer-mode",
-        "component": require('../../docs/design-patterns/observer-mode.md').default,
+        "component": require('C:/workpalce/blog/docs/design-patterns/observer-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/observer-mode.md",
@@ -593,7 +709,7 @@ export function getRoutes() {
       },
       {
         "path": "/design-patterns/prototype-mode",
-        "component": require('../../docs/design-patterns/prototype-mode.md').default,
+        "component": require('C:/workpalce/blog/docs/design-patterns/prototype-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/prototype-mode.md",
@@ -615,7 +731,7 @@ export function getRoutes() {
       },
       {
         "path": "/design-patterns/publish-subscribe-mode",
-        "component": require('../../docs/design-patterns/publish-subscribe-mode.md').default,
+        "component": require('C:/workpalce/blog/docs/design-patterns/publish-subscribe-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/publish-subscribe-mode.md",
@@ -642,7 +758,7 @@ export function getRoutes() {
       },
       {
         "path": "/design-patterns/singleton-mode",
-        "component": require('../../docs/design-patterns/singleton-mode.md').default,
+        "component": require('C:/workpalce/blog/docs/design-patterns/singleton-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/singleton-mode.md",
@@ -664,7 +780,7 @@ export function getRoutes() {
       },
       {
         "path": "/design-patterns/strategy-mode",
-        "component": require('../../docs/design-patterns/strategy-mode.md').default,
+        "component": require('C:/workpalce/blog/docs/design-patterns/strategy-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/strategy-mode.md",
@@ -691,7 +807,7 @@ export function getRoutes() {
       },
       {
         "path": "/interview/html",
-        "component": require('../../docs/interview/html.md').default,
+        "component": require('C:/workpalce/blog/docs/interview/html.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/interview/html.md",
@@ -713,7 +829,7 @@ export function getRoutes() {
       },
       {
         "path": "/interview",
-        "component": require('../../docs/interview/index.md').default,
+        "component": require('C:/workpalce/blog/docs/interview/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/interview/index.md",
@@ -735,11 +851,11 @@ export function getRoutes() {
       },
       {
         "path": "/javascript/higher-order function",
-        "component": require('../../docs/javascript/higher-order function.md').default,
+        "component": require('C:/workpalce/blog/docs/javascript/higher-order function.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/higher-order function.md",
-          "updatedTime": 1606313561925,
+          "updatedTime": 1612536433264,
           "slugs": [
             {
               "depth": 1,
@@ -807,7 +923,7 @@ export function getRoutes() {
       },
       {
         "path": "/javascript/prototype",
-        "component": require('../../docs/javascript/prototype.md').default,
+        "component": require('C:/workpalce/blog/docs/javascript/prototype.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/prototype.md",
@@ -874,7 +990,7 @@ export function getRoutes() {
       },
       {
         "path": "/learning/2021learning-plan",
-        "component": require('../../docs/learning/2021learning-plan.md').default,
+        "component": require('C:/workpalce/blog/docs/learning/2021learning-plan.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/learning/2021learning-plan.md",
@@ -896,7 +1012,7 @@ export function getRoutes() {
       },
       {
         "path": "/learning/collection",
-        "component": require('../../docs/learning/collection.md').default,
+        "component": require('C:/workpalce/blog/docs/learning/collection.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/learning/collection.md",
@@ -933,7 +1049,7 @@ export function getRoutes() {
       },
       {
         "path": "/learning",
-        "component": require('../../docs/learning/index.md').default,
+        "component": require('C:/workpalce/blog/docs/learning/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/learning/index.md",
@@ -955,7 +1071,7 @@ export function getRoutes() {
       },
       {
         "path": "/micro-frontends",
-        "component": require('../../docs/Micro-frontends/index.md').default,
+        "component": require('C:/workpalce/blog/docs/Micro-frontends/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Micro-frontends/index.md",
@@ -971,7 +1087,7 @@ export function getRoutes() {
       },
       {
         "path": "/micro-frontends/system-js",
-        "component": require('../../docs/Micro-frontends/SystemJS.md').default,
+        "component": require('C:/workpalce/blog/docs/Micro-frontends/SystemJS.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Micro-frontends/SystemJS.md",
@@ -1023,7 +1139,7 @@ export function getRoutes() {
       },
       {
         "path": "/performance",
-        "component": require('../../docs/performance/index.md').default,
+        "component": require('C:/workpalce/blog/docs/performance/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/performance/index.md",
@@ -1045,7 +1161,7 @@ export function getRoutes() {
       },
       {
         "path": "/performance/time-slice",
-        "component": require('../../docs/performance/time-slice.md').default,
+        "component": require('C:/workpalce/blog/docs/performance/time-slice.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/performance/time-slice.md",
@@ -1107,7 +1223,7 @@ export function getRoutes() {
       },
       {
         "path": "/performance/virtual-scroll",
-        "component": require('../../docs/performance/virtual-scroll.md').default,
+        "component": require('C:/workpalce/blog/docs/performance/virtual-scroll.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/performance/virtual-scroll.md",
@@ -1169,7 +1285,7 @@ export function getRoutes() {
       },
       {
         "path": "/react",
-        "component": require('../../docs/React/index.md').default,
+        "component": require('C:/workpalce/blog/docs/React/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/React/index.md",
@@ -1336,7 +1452,7 @@ export function getRoutes() {
       },
       {
         "path": "/react/react-source",
-        "component": require('../../docs/React/react-source.md').default,
+        "component": require('C:/workpalce/blog/docs/React/react-source.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/React/react-source.md",
@@ -1418,7 +1534,7 @@ export function getRoutes() {
       },
       {
         "path": "/vue/virtual-dom",
-        "component": require('../../docs/Vue/virtualDOM.md').default,
+        "component": require('C:/workpalce/blog/docs/Vue/virtualDOM.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Vue/virtualDOM.md",
@@ -1460,7 +1576,7 @@ export function getRoutes() {
       },
       {
         "path": "/vue/vue-i18n",
-        "component": require('../../docs/Vue/vue-i18n.md').default,
+        "component": require('C:/workpalce/blog/docs/Vue/vue-i18n.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Vue/vue-i18n.md",
@@ -1517,7 +1633,7 @@ export function getRoutes() {
       },
       {
         "path": "/vue/vue3",
-        "component": require('../../docs/Vue/vue3.0-1.md').default,
+        "component": require('C:/workpalce/blog/docs/Vue/vue3.0-1.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Vue/vue3.0-1.md",
@@ -1619,7 +1735,8 @@ export function getRoutes() {
         "redirect": "/vue/virtual-dom"
       }
     ],
-    "title": "hefeng6500 的博客"
+    "title": "hefeng6500 的博客",
+    "component": (props) => props.children
   }
 ];
 
