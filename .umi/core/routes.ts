@@ -469,7 +469,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/articles/interview-knowledge.md",
-          "updatedTime": null,
+          "updatedTime": 1614178744000,
           "slugs": [
             {
               "depth": 1,
@@ -581,6 +581,43 @@ export function getRoutes() {
           }
         },
         "title": "学习计划"
+      },
+      {
+        "path": "/articles/observer vs pub-sub pattern",
+        "component": require('C:/workpalce/blog/docs/articles/Observer vs Pub-Sub pattern.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/articles/Observer vs Pub-Sub pattern.md",
+          "updatedTime": 1614404572291,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "观察者模式 和 发布-订阅 模式",
+              "heading": "观察者模式-和-发布-订阅-模式"
+            },
+            {
+              "depth": 2,
+              "value": "观察者模式",
+              "heading": "观察者模式"
+            },
+            {
+              "depth": 2,
+              "value": "发布-订阅模式",
+              "heading": "发布-订阅模式"
+            },
+            {
+              "depth": 2,
+              "value": "总结",
+              "heading": "总结"
+            }
+          ],
+          "title": "观察者模式 和 发布-订阅 模式",
+          "nav": {
+            "path": "/articles",
+            "title": "博客"
+          }
+        },
+        "title": "观察者模式 和 发布-订阅 模式"
       },
       {
         "path": "/design-patterns/adapter-mode",

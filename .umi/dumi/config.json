@@ -45,6 +45,11 @@
           "path": "/articles/learning-plan",
           "title": "学习计划",
           "meta": {}
+        },
+        {
+          "path": "/articles/observer vs pub-sub pattern",
+          "title": "观察者模式 和 发布-订阅 模式",
+          "meta": {}
         }
       ],
       "/design-patterns": [
