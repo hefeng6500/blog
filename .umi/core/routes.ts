@@ -588,7 +588,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/articles/Observer vs Pub-Sub pattern.md",
-          "updatedTime": 1614404572291,
+          "updatedTime": 1614404609829,
           "slugs": [
             {
               "depth": 1,
