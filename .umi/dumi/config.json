@@ -18,6 +18,11 @@
           "path": "/algorithm/leecode",
           "title": "🔥LeetCode 热题 HOT 100",
           "meta": {}
+        },
+        {
+          "path": "/algorithm/删除排序数组中的重复项",
+          "title": "删除排序数组中的重复项",
+          "meta": {}
         }
       ],
       "/articles": [

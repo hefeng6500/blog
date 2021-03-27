@@ -222,6 +222,28 @@ export function getRoutes() {
         "title": "🔥LeetCode 热题 HOT 100"
       },
       {
+        "path": "/algorithm/删除排序数组中的重复项",
+        "component": require('C:/workpalce/blog/docs/algorithm/删除排序数组中的重复项.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/algorithm/删除排序数组中的重复项.md",
+          "updatedTime": null,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "删除排序数组中的重复项",
+              "heading": "删除排序数组中的重复项"
+            }
+          ],
+          "title": "删除排序数组中的重复项",
+          "nav": {
+            "path": "/algorithm",
+            "title": "力扣"
+          }
+        },
+        "title": "删除排序数组中的重复项"
+      },
+      {
         "path": "/articles/article1",
         "component": require('C:/workpalce/blog/docs/articles/article1.md').default,
         "exact": true,
