@@ -42,7 +42,7 @@ jobs:
         BRANCH: master
         FOLDER: dist
         REPOSITORY_NAME: hefeng6500/hefeng6500.github.io
-        TARGET_FOLDER: blog
+        # TARGET_FOLDER: blog
 
       env:
         CI: true
