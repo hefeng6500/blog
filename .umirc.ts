@@ -3,8 +3,8 @@ import { defineConfig } from 'dumi';
 export default defineConfig({
   title: 'hefeng6500 的博客',
   mode: 'site',
-  base: '/blog/',
-  publicPath: '/blog/',
+  base: '/',
+  publicPath: '/',
   description: 'hefeng6500 的博客',
   styles: [
     `
