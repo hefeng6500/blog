@@ -11,8 +11,16 @@ export function getRoutes() {
     "layout": false,
     "wrappers": [require('C:/workpalce/blog/node_modules/@umijs/preset-dumi/lib/theme/layout').default],
     "component": (props) => {
-      const React = require('react');
-      const renderArgs = require('../../node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs').default(props);
+        const { default: getDemoRenderArgs } = require('C:/workpalce/blog/node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs');
+        const { default: Previewer } = require('dumi-theme-default/src/builtins/Previewer.tsx');
+        const { default: demos } = require('@@/dumi/demos');
+        const { usePrefersColor } = require('dumi/theme');
+
+        
+      const renderArgs = getDemoRenderArgs(props, demos);
+
+      // for listen prefers-color-schema media change in demo single route
+      usePrefersColor();
 
       switch (renderArgs.length) {
         case 1:
@@ -22,15 +30,16 @@ export function getRoutes() {
         case 2:
           // render demo with previewer
           return React.createElement(
-            require('dumi-theme-default/src/builtins/Previewer.tsx').default,
+            Previewer,
             renderArgs[0],
             renderArgs[1],
           );
 
         default:
-          return `Demo ${uuid} not found :(`;
+          return `Demo ${props.match.params.uuid} not found :(`;
       }
-    }
+    
+        }
   },
   {
     "path": "/_demos/:uuid",
@@ -81,6 +90,50 @@ export function getRoutes() {
           "title": "Index"
         },
         "title": "Index"
+      },
+      {
+        "path": "/algorithm/1-删除排序数组中的重复项",
+        "component": require('C:/workpalce/blog/docs/algorithm/1-删除排序数组中的重复项.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/algorithm/1-删除排序数组中的重复项.md",
+          "updatedTime": 1617716590641,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "1-删除排序数组中的重复项",
+              "heading": "1-删除排序数组中的重复项"
+            }
+          ],
+          "title": "1-删除排序数组中的重复项",
+          "nav": {
+            "path": "/algorithm",
+            "title": "力扣"
+          }
+        },
+        "title": "1-删除排序数组中的重复项"
+      },
+      {
+        "path": "/algorithm/2-买卖股票的最佳时机",
+        "component": require('C:/workpalce/blog/docs/algorithm/2-买卖股票的最佳时机.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/algorithm/2-买卖股票的最佳时机.md",
+          "updatedTime": 1617716489116,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "2-买卖股票的最佳时机 II",
+              "heading": "2-买卖股票的最佳时机-ii"
+            }
+          ],
+          "title": "2-买卖股票的最佳时机 II",
+          "nav": {
+            "path": "/algorithm",
+            "title": "力扣"
+          }
+        },
+        "title": "2-买卖股票的最佳时机 II"
       },
       {
         "path": "/algorithm/algorithm-complexity",
@@ -220,28 +273,6 @@ export function getRoutes() {
           "title": "🔥LeetCode 热题 HOT 100"
         },
         "title": "🔥LeetCode 热题 HOT 100"
-      },
-      {
-        "path": "/algorithm/删除排序数组中的重复项",
-        "component": require('C:/workpalce/blog/docs/algorithm/删除排序数组中的重复项.md').default,
-        "exact": true,
-        "meta": {
-          "filePath": "docs/algorithm/删除排序数组中的重复项.md",
-          "updatedTime": null,
-          "slugs": [
-            {
-              "depth": 1,
-              "value": "删除排序数组中的重复项",
-              "heading": "删除排序数组中的重复项"
-            }
-          ],
-          "title": "删除排序数组中的重复项",
-          "nav": {
-            "path": "/algorithm",
-            "title": "力扣"
-          }
-        },
-        "title": "删除排序数组中的重复项"
       },
       {
         "path": "/articles/article1",
@@ -1771,7 +1802,7 @@ export function getRoutes() {
         "path": "/algorithm",
         "meta": {},
         "exact": true,
-        "redirect": "/algorithm/algorithm-complexity"
+        "redirect": "/algorithm/1-删除排序数组中的重复项"
       },
       {
         "path": "/articles",

@@ -2,7 +2,7 @@
 import { createBrowserHistory, History } from 'C:/workpalce/blog/node_modules/@umijs/runtime';
 
 let options = {
-  "basename": "/blog/"
+  "basename": "/"
 };
 if ((<any>window).routerBase) {
   options.basename = (<any>window).routerBase;

@@ -1,6 +1,7 @@
 // Created by Umi Plugin
 
 export interface IConfigFromPlugins {
+"404"?: boolean
 routes?: {
 /**
  * Any valid URL path
@@ -222,6 +223,16 @@ theme?: {
 
 }
 runtimeHistory?: {
+
+}
+webpack5?: {
+lazyCompilation?: {
+entries?: boolean
+imports?: boolean
+test?: any
+}
+}
+workerLoader?: {
 
 }
 favicon?: string
