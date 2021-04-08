@@ -97,7 +97,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/1-删除排序数组中的重复项.md",
-          "updatedTime": 1617716590641,
+          "updatedTime": 1617716584000,
           "slugs": [
             {
               "depth": 1,
@@ -119,7 +119,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/2-买卖股票的最佳时机.md",
-          "updatedTime": 1617716489116,
+          "updatedTime": 1617716611000,
           "slugs": [
             {
               "depth": 1,
@@ -134,6 +134,28 @@ export function getRoutes() {
           }
         },
         "title": "2-买卖股票的最佳时机 II"
+      },
+      {
+        "path": "/algorithm/3-旋转数组",
+        "component": require('C:/workpalce/blog/docs/algorithm/3-旋转数组.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/algorithm/3-旋转数组.md",
+          "updatedTime": 1617890449996,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "3-旋转数组",
+              "heading": "3-旋转数组"
+            }
+          ],
+          "title": "3-旋转数组",
+          "nav": {
+            "path": "/algorithm",
+            "title": "力扣"
+          }
+        },
+        "title": "3-旋转数组"
       },
       {
         "path": "/algorithm/algorithm-complexity",
