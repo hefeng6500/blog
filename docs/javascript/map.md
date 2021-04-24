@@ -1,3 +1,6 @@
+# 手动实现 map 函数
+
+```js
 Array.prototype.map = function(callback, thisArg) {
   if (this == null) {
     throw new TypeError('this is null or not defined');
@@ -15,7 +18,9 @@ Array.prototype.map = function(callback, thisArg) {
   }
   return result;
 };
+```
 
+```js
 Array.prototype.map = function(callback, thisArg) {
   if (this == null) {
     throw new TypeError('this is null or not defined');
@@ -30,9 +35,12 @@ Array.prototype.map = function(callback, thisArg) {
     return acc;
   }, []);
 };
+```
 
+```js
 var xs = ['10', '10', '10'];
 
 xs = xs.map(parseInt);
 
 console.log(xs); // 输出结果为(3) [10, NaN, 2]
+```

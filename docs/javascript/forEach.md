@@ -1,3 +1,6 @@
+# 手动实现 forEach 函数
+
+```js
 Array.prototype.forEach = function(callback, thisArg) {
   if (this == null) {
     throw new TypeError(' this is null or not defined');
@@ -13,3 +16,4 @@ Array.prototype.forEach = function(callback, thisArg) {
     i++;
   }
 };
+```
