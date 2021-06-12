@@ -10,7 +10,7 @@ export default defineConfig({
     null, // A null value means to retain the conventionally generated navigation and only do incremental configuration
     {
       title: 'vue3.0-analysis',
-      path: '/vue3.0-analysis/',
+      path: 'https://hefeng6500.github.io/vue3.0-analysis/',
     },
   ],
   styles: [
