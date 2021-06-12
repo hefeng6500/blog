@@ -302,7 +302,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/articles/article1.md",
-          "updatedTime": 1610803381000,
+          "updatedTime": 1623483496000,
           "nav": {
             "title": "博客",
             "order": 1,
@@ -336,8 +336,8 @@ export function getRoutes() {
             },
             {
               "depth": 2,
-              "value": "三、Github生成访问令牌",
-              "heading": "三、github生成访问令牌"
+              "value": "三、Github 生成访问令牌",
+              "heading": "三、github-生成访问令牌"
             },
             {
               "depth": 2,
