@@ -128,13 +128,28 @@
       ],
       "/javascript": [
         {
+          "path": "/javascript/for-each",
+          "title": "手动实现 forEach 函数",
+          "meta": {}
+        },
+        {
           "path": "/javascript/higher-order function",
           "title": "高阶函数",
           "meta": {}
         },
         {
+          "path": "/javascript/map",
+          "title": "手动实现 map 函数",
+          "meta": {}
+        },
+        {
           "path": "/javascript/prototype",
           "title": "原型、原型链和继承",
+          "meta": {}
+        },
+        {
+          "path": "/javascript/reduce",
+          "title": "手动实现 reduce 函数",
           "meta": {}
         }
       ],
@@ -205,6 +220,11 @@
         {
           "path": "/vue/vue-i18n",
           "title": "vue-i18n",
+          "meta": {}
+        },
+        {
+          "path": "/vue/vue-router",
+          "title": "Vue-Router 源码解析",
           "meta": {}
         },
         {

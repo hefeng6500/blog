@@ -22,24 +22,26 @@ nav:
 
 本文主要讲下使用 Dumi 搭建一个属于自己博客
 
-dumi官网： https://d.umijs.org/zh-CN
+dumi 官网： https://d.umijs.org/zh-CN
 
 ## 一、创建静态站点脚手架
-
 
 ```shell
 $ npx @umijs/create-dumi-app
 # or
 $ yarn create @umijs/dumi-app
 ```
+
 <br />
 
 安装依赖
+
 ```shell
 yarn install
 ```
 
 启动文档
+
 ```shell
 yarn start
 ```
@@ -68,7 +70,7 @@ git push -u origin main
 
 username 指的是你的 github 用户名
 
-## 三、Github生成访问令牌
+## 三、Github 生成访问令牌
 
 github -> setting -> Developer settings -> Personal access tokens -> Generate new token
 
@@ -76,16 +78,16 @@ github -> setting -> Developer settings -> Personal access tokens -> Generate ne
 
 ![generate-new-token](../assets/generate-new-token.png)
 
-
 ## 四、配置 github Actions 流水线
 
-设置 blog 的 DEPLOY_KEY
+设置 blog 的 DEPLOY_KEY, setting -> Secrets,
+
+Name: DEPLOY_KEY
+Value: 填写第三步生成的 token
 
 ![dumi](../assets/DEPLOY_KEY.png)
 
-
-
-打开当前仓库的 Actions 
+打开当前仓库的 Actions
 
 ![github-actions](../assets/github-actions-init.png)
 
@@ -118,35 +120,34 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 15.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 15.x
+      - uses: actions/checkout@v1
+      - name: Use Node.js 15.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15.x
 
-    - name: yarn install, build
-      run: |
-        yarn
-        yarn build
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@3.7.1
-      with:
-        ACCESS_TOKEN: ${{ secrets.DEPLOY_KEY }}
-        BRANCH: master
-        FOLDER: dist
-        REPOSITORY_NAME: hefeng6500/hefeng6500.github.io
-        TARGET_FOLDER: blog
+      - name: yarn install, build
+        run: |
+          yarn
+          yarn build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          ACCESS_TOKEN: ${{ secrets.DEPLOY_KEY }}
+          BRANCH: master
+          FOLDER: dist
+          REPOSITORY_NAME: hefeng6500/hefeng6500.github.io
+          TARGET_FOLDER: blog
 
-      env:
-        CI: true
+        env:
+          CI: true
 ```
 
 - on: push、pull request 会触发该 CI
-- ACCESS_TOKEN: ${{ secrets.DEPLOY_KEY }} 即为刚刚配置的 ACCESS_TOKEN
+- ACCESS_TOKEN: \${{ secrets.DEPLOY_KEY }} 即为刚刚配置的 ACCESS_TOKEN
 - REPOSITORY_NAME：[username]/[username].github.io
 - FOLDER: 发布的包文件夹
 - TARGET_FOLDER： 发布到哪个目录下
-
 
 ## 五、触发 CI
 
@@ -154,13 +155,4 @@ jobs:
 
 ![github-actions](../assets/deploy.png)
 
-
 参考： https://www.codenong.com/j5ec65e7df265da771a1fc356/
-
-
-
-
-
-
-
-

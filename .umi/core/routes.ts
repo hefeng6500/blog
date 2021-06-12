@@ -141,7 +141,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/3-旋转数组.md",
-          "updatedTime": 1617890449996,
+          "updatedTime": 1617890525000,
           "slugs": [
             {
               "depth": 1,
@@ -962,6 +962,28 @@ export function getRoutes() {
         "title": "面试题"
       },
       {
+        "path": "/javascript/for-each",
+        "component": require('C:/workpalce/blog/docs/javascript/forEach.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/javascript/forEach.md",
+          "updatedTime": 1619262561000,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "手动实现 forEach 函数",
+              "heading": "手动实现-foreach-函数"
+            }
+          ],
+          "title": "手动实现 forEach 函数",
+          "nav": {
+            "path": "/javascript",
+            "title": "Javascript"
+          }
+        },
+        "title": "手动实现 forEach 函数"
+      },
+      {
         "path": "/javascript/higher-order function",
         "component": require('C:/workpalce/blog/docs/javascript/higher-order function.md').default,
         "exact": true,
@@ -1034,6 +1056,28 @@ export function getRoutes() {
         "title": "高阶函数"
       },
       {
+        "path": "/javascript/map",
+        "component": require('C:/workpalce/blog/docs/javascript/map.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/javascript/map.md",
+          "updatedTime": 1619262561000,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "手动实现 map 函数",
+              "heading": "手动实现-map-函数"
+            }
+          ],
+          "title": "手动实现 map 函数",
+          "nav": {
+            "path": "/javascript",
+            "title": "Javascript"
+          }
+        },
+        "title": "手动实现 map 函数"
+      },
+      {
         "path": "/javascript/prototype",
         "component": require('C:/workpalce/blog/docs/javascript/prototype.md').default,
         "exact": true,
@@ -1099,6 +1143,28 @@ export function getRoutes() {
           }
         },
         "title": "原型、原型链和继承"
+      },
+      {
+        "path": "/javascript/reduce",
+        "component": require('C:/workpalce/blog/docs/javascript/reduce.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/javascript/reduce.md",
+          "updatedTime": 1619258418000,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "手动实现 reduce 函数",
+              "heading": "手动实现-reduce-函数"
+            }
+          ],
+          "title": "手动实现 reduce 函数",
+          "nav": {
+            "path": "/javascript",
+            "title": "Javascript"
+          }
+        },
+        "title": "手动实现 reduce 函数"
       },
       {
         "path": "/learning/2021learning-plan",
@@ -1744,6 +1810,53 @@ export function getRoutes() {
         "title": "vue-i18n"
       },
       {
+        "path": "/vue/vue-router",
+        "component": require('C:/workpalce/blog/docs/Vue/vue-router.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/Vue/vue-router.md",
+          "updatedTime": 1618730221000,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "Vue-Router 源码解析",
+              "heading": "vue-router-源码解析"
+            },
+            {
+              "depth": 2,
+              "value": "介绍",
+              "heading": "介绍"
+            },
+            {
+              "depth": 2,
+              "value": "Vue.use()",
+              "heading": "vueuse"
+            },
+            {
+              "depth": 2,
+              "value": "install 方法",
+              "heading": "install-方法"
+            },
+            {
+              "depth": 2,
+              "value": "创建匹配器",
+              "heading": "创建匹配器"
+            },
+            {
+              "depth": 2,
+              "value": "创建历史管理",
+              "heading": "创建历史管理"
+            }
+          ],
+          "title": "Vue-Router 源码解析",
+          "nav": {
+            "path": "/vue",
+            "title": "Vue"
+          }
+        },
+        "title": "Vue-Router 源码解析"
+      },
+      {
         "path": "/vue/vue3",
         "component": require('C:/workpalce/blog/docs/Vue/vue3.0-1.md').default,
         "exact": true,
@@ -1838,7 +1951,7 @@ export function getRoutes() {
         "path": "/javascript",
         "meta": {},
         "exact": true,
-        "redirect": "/javascript/higher-order function"
+        "redirect": "/javascript/for-each"
       },
       {
         "path": "/vue",
