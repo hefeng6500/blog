@@ -3,8 +3,8 @@ import { defineConfig } from 'dumi';
 export default defineConfig({
   title: 'hefeng6500 的博客',
   mode: 'site',
-  base: '/',
-  publicPath: '/',
+  base: '/blog',
+  publicPath: '/blog',
   description: 'hefeng6500 的博客',
   navs: [
     null, // A null value means to retain the conventionally generated navigation and only do incremental configuration
