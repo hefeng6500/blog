@@ -1,6 +1,6 @@
 ---
 hero:
-  title: 高级前端进阶
+  title: 高级前端进阶1
   desc: 🍙 To be an overflow stack engineer
   actions:
     - text: Fire →
