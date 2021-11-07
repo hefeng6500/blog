@@ -66,19 +66,11 @@ git branch -M main
 git push -u origin main
 ```
 
-### 2、创建 [username].github.io 仓库
+### 2、创建 gh-pages 分支
 
-username 指的是你的 github 用户名
+在刚刚创建的项目中创建 gh-pages 分支
 
-## 三、Github 生成访问令牌
-
-github -> setting -> Developer settings -> Personal access tokens -> Generate new token
-
-为保证后续发布顺利，可以将下面所有的权限全部勾选
-
-![generate-new-token](../assets/generate-new-token.png)
-
-## 四、配置 github Actions 流水线
+## 三、配置 github Actions 流水线
 
 设置 blog 的 DEPLOY_KEY, setting -> Secrets,
 
@@ -116,7 +108,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [12]
+        node: [16]
         os: [ubuntu-latest]
 
     steps:
@@ -130,29 +122,13 @@ jobs:
         run: |
           yarn
           yarn build
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          ACCESS_TOKEN: ${{ secrets.DEPLOY_KEY }}
-          BRANCH: master
+          BRANCH: gh-pages
           FOLDER: dist
-          REPOSITORY_NAME: hefeng6500/hefeng6500.github.io
-          TARGET_FOLDER: blog
-
-        env:
-          CI: true
 ```
 
-- on: push、pull request 会触发该 CI
-- ACCESS_TOKEN: \${{ secrets.DEPLOY_KEY }} 即为刚刚配置的 ACCESS_TOKEN
-- REPOSITORY_NAME：[username]/[username].github.io
-- FOLDER: 发布的包文件夹
-- TARGET_FOLDER： 发布到哪个目录下
+将来自 main 分支的 `push`, `pull request`进行打包和发布
 
-## 五、触发 CI
-
-后续只要 push 或者 pull request 代码到 main，都会触发 CI 推送代码到 [username].github.io 仓库
-
-![github-actions](../assets/deploy.png)
-
-参考： https://www.codenong.com/j5ec65e7df265da771a1fc356/
+打开 https://hefeng6500.github.io/blog
