@@ -72,17 +72,6 @@ git push -u origin main
 
 ## 三、配置 github Actions 流水线
 
-设置 blog 的 DEPLOY_KEY, setting -> Secrets,
-
-Name: DEPLOY_KEY
-Value: 填写第三步生成的 token
-
-![dumi](../assets/DEPLOY_KEY.png)
-
-打开当前仓库的 Actions
-
-![github-actions](../assets/github-actions-init.png)
-
 配置 yml 文件
 
 ```yml
