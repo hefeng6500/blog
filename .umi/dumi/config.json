@@ -128,18 +128,8 @@
       ],
       "/javascript": [
         {
-          "path": "/javascript/for-each",
-          "title": "手动实现 forEach 函数",
-          "meta": {}
-        },
-        {
           "path": "/javascript/higher-order function",
           "title": "高阶函数",
-          "meta": {}
-        },
-        {
-          "path": "/javascript/map",
-          "title": "手动实现 map 函数",
           "meta": {}
         },
         {
@@ -148,8 +138,8 @@
           "meta": {}
         },
         {
-          "path": "/javascript/reduce",
-          "title": "手动实现 reduce 函数",
+          "path": "/javascript/write",
+          "title": "JavaScript 高级之手写系列",
           "meta": {}
         }
       ],
@@ -173,7 +163,7 @@
       "/micro-frontends": [
         {
           "path": "/micro-frontends",
-          "title": "Index",
+          "title": "Micro-frontends",
           "meta": {}
         },
         {
@@ -290,10 +280,11 @@
       }
     ]
   },
-  "title": "hefeng6500 的博客",
-  "description": "hefeng6500 的博客",
+  "title": "高级前端进阶",
+  "description": "高级前端进阶",
   "mode": "site",
   "repository": {
+    "url": "",
     "branch": "master"
   },
   "theme": {}

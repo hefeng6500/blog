@@ -2,6 +2,8 @@
   "private": true,
   "name": "dumi-app",
   "scripts": {
+    "serve": "dumi dev",
+    "dev": "dumi dev",
     "start": "dumi dev",
     "build": "dumi build",
     "deploy": "bash deploy.sh",

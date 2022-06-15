@@ -4,8 +4,8 @@ import '@@/core/devScripts';
 import { plugin } from './core/plugin';
 import './core/pluginRegister';
 import { createHistory } from './core/history';
-import { ApplyPluginsType } from 'C:/workpalce/blog/node_modules/@umijs/runtime';
-import { renderClient } from 'C:/workpalce/blog/node_modules/@umijs/renderer-react/dist/index.js';
+import { ApplyPluginsType } from 'D:/workplace/blog/node_modules/@umijs/runtime';
+import { renderClient } from 'D:/workplace/blog/node_modules/@umijs/renderer-react';
 import { getRoutes } from './core/routes';
 
 
@@ -24,7 +24,7 @@ const getClientRender = (args: { hot?: boolean; routes?: any[] } = {}) => plugin
         history: createHistory(args.hot),
         isServer: process.env.__IS_SERVER,
         rootElement: 'root',
-        defaultTitle: `hefeng6500 的博客`,
+        defaultTitle: `高级前端进阶`,
       },
     });
     return renderClient(opts);
@@ -37,7 +37,7 @@ export default clientRender();
 
 
     window.g_umi = {
-      version: '3.4.7',
+      version: '3.5.20',
     };
   
 

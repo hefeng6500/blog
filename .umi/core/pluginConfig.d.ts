@@ -171,6 +171,23 @@ publicPath?: ""
 basePath?: string
 writeToFileEmit?: boolean
 }
+/**
+ * open mfsu feature
+ */
+mfsu?: {
+development?: {
+output?: string
+}
+production?: {
+output?: string
+}
+mfName?: string
+exportAllMembers?: {
+
+}
+chunks?: string[]
+ignoreNodeBuiltInModules?: boolean
+}
 mountElementId?: ""
 mpa?: {
 
@@ -262,6 +279,7 @@ navs?: (any[] | {
 
 })
 algolia?: {
+appId?: string
 apiKey?: string
 indexName?: string
 debug?: boolean
@@ -269,6 +287,9 @@ debug?: boolean
 sitemap?: {
 hostname?: string
 excludes?: string[]
+}
+apiParser?: {
+
 }
 [k: string]: any
 }

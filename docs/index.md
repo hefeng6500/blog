@@ -1,9 +1,9 @@
 ---
 hero:
-  title: 高级前端进阶1
+  title: 阿里 P6 进阶之路
   desc: 🍙 To be an overflow stack engineer
   actions:
-    - text: Fire →
+    - text: 开始 →
       link: /getting-started
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
@@ -15,5 +15,5 @@ features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/d1ee0c6f-5aed-4a45-a507-339a4bfe076c/k7bjsocq_w144_h144.png
     title: 服务端及运维技术
     desc: Node.js、服务端渲染，持续集成/部署
-footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](https://d.umijs.org)
+footer: Open-source MIT Licensed | Copyright © 2022<br />Powered by [dumi](https://d.umijs.org/zh-CN)
 ---

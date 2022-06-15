@@ -1,8 +1,8 @@
 // @ts-nocheck
-import { createBrowserHistory, History } from 'C:/workpalce/blog/node_modules/@umijs/runtime';
+import { createBrowserHistory, History } from 'D:/workplace/blog/node_modules/@umijs/runtime';
 
 let options = {
-  "basename": "/"
+  "basename": "/blog/"
 };
 if ((<any>window).routerBase) {
   options.basename = (<any>window).routerBase;

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import { ApplyPluginsType } from 'C:/workpalce/blog/node_modules/@umijs/runtime';
+import { ApplyPluginsType } from 'D:/workplace/blog/node_modules/@umijs/runtime';
 import * as umiExports from './umiExports';
 import { plugin } from './plugin';
 
@@ -9,14 +9,14 @@ export function getRoutes() {
   {
     "path": "/~demos/:uuid",
     "layout": false,
-    "wrappers": [require('C:/workpalce/blog/node_modules/@umijs/preset-dumi/lib/theme/layout').default],
+    "wrappers": [require('../dumi/layout').default],
     "component": (props) => {
-        const { default: getDemoRenderArgs } = require('C:/workpalce/blog/node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs');
-        const { default: Previewer } = require('dumi-theme-default/src/builtins/Previewer.tsx');
-        const { default: demos } = require('@@/dumi/demos');
-        const { usePrefersColor } = require('dumi/theme');
+        const { default: getDemoRenderArgs } = require('D:/workplace/blog/node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs');
+        const { default: Previewer } = require('dumi-theme-default/es/builtins/Previewer.js');
+        const { usePrefersColor, context } = require('dumi/theme');
 
         
+      const { demos } = React.useContext(context);
       const renderArgs = getDemoRenderArgs(props, demos);
 
       // for listen prefers-color-schema media change in demo single route
@@ -49,21 +49,21 @@ export function getRoutes() {
     "__dumiRoot": true,
     "layout": false,
     "path": "/",
-    "wrappers": [require('C:/workpalce/blog/node_modules/@umijs/preset-dumi/lib/theme/layout').default, require('C:/workpalce/blog/node_modules/dumi-theme-default/src/layout.tsx').default],
+    "wrappers": [require('../dumi/layout').default, require('D:/workplace/blog/node_modules/dumi-theme-default/es/layout.js').default],
     "routes": [
       {
         "path": "/",
-        "component": require('C:/workpalce/blog/docs/index.md').default,
+        "component": require('D:/workplace/blog/docs/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/index.md",
-          "updatedTime": 1606315224000,
+          "updatedTime": 1635655890000,
           "hero": {
-            "title": "高级前端进阶",
+            "title": "阿里 P6 进阶之路",
             "desc": "<div class=\"markdown\"><p>🍙 To be an overflow stack engineer</p></div>",
             "actions": [
               {
-                "text": "Fire →",
+                "text": "开始 →",
                 "link": "/getting-started"
               }
             ]
@@ -85,19 +85,19 @@ export function getRoutes() {
               "desc": "<div class=\"markdown\"><p>Node.js、服务端渲染，持续集成/部署</p></div>"
             }
           ],
-          "footer": "<div class=\"markdown\"><p>Open-source MIT Licensed | Copyright © 2020<br />Powered by <a href=\"https://d.umijs.org/\" target=\"_blank\">dumi<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"\" x=\"0px\" y=\"0px\" viewBox=\"0 0 100 100\" width=\"15\" height=\"15\" class=\"__dumi-default-external-link-icon\"><path fill=\"currentColor\" d=\"M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z\"></path><polygon fill=\"currentColor\" points=\"45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9\"></polygon></svg></a></p></div>",
+          "footer": "<div class=\"markdown\"><p>Open-source MIT Licensed | Copyright © 2022<br />Powered by <a href=\"https://d.umijs.org/zh-CN\" target=\"_blank\">dumi<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"\" x=\"0px\" y=\"0px\" viewBox=\"0 0 100 100\" width=\"15\" height=\"15\" class=\"__dumi-default-external-link-icon\"><path fill=\"currentColor\" d=\"M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z\"></path><polygon fill=\"currentColor\" points=\"45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9\"></polygon></svg></a></p></div>",
           "slugs": [],
           "title": "Index"
         },
-        "title": "Index"
+        "title": "Index - 高级前端进阶"
       },
       {
         "path": "/algorithm/1-删除排序数组中的重复项",
-        "component": require('C:/workpalce/blog/docs/algorithm/1-删除排序数组中的重复项.md').default,
+        "component": require('D:/workplace/blog/docs/algorithm/1-删除排序数组中的重复项.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/1-删除排序数组中的重复项.md",
-          "updatedTime": 1617716584000,
+          "updatedTime": 1628171938000,
           "slugs": [
             {
               "depth": 1,
@@ -111,11 +111,11 @@ export function getRoutes() {
             "title": "力扣"
           }
         },
-        "title": "1-删除排序数组中的重复项"
+        "title": "1-删除排序数组中的重复项 - 高级前端进阶"
       },
       {
         "path": "/algorithm/2-买卖股票的最佳时机",
-        "component": require('C:/workpalce/blog/docs/algorithm/2-买卖股票的最佳时机.md').default,
+        "component": require('D:/workplace/blog/docs/algorithm/2-买卖股票的最佳时机.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/2-买卖股票的最佳时机.md",
@@ -133,11 +133,11 @@ export function getRoutes() {
             "title": "力扣"
           }
         },
-        "title": "2-买卖股票的最佳时机 II"
+        "title": "2-买卖股票的最佳时机 II - 高级前端进阶"
       },
       {
         "path": "/algorithm/3-旋转数组",
-        "component": require('C:/workpalce/blog/docs/algorithm/3-旋转数组.md').default,
+        "component": require('D:/workplace/blog/docs/algorithm/3-旋转数组.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/3-旋转数组.md",
@@ -155,11 +155,11 @@ export function getRoutes() {
             "title": "力扣"
           }
         },
-        "title": "3-旋转数组"
+        "title": "3-旋转数组 - 高级前端进阶"
       },
       {
         "path": "/algorithm/algorithm-complexity",
-        "component": require('C:/workpalce/blog/docs/algorithm/algorithm-complexity.md').default,
+        "component": require('D:/workplace/blog/docs/algorithm/algorithm-complexity.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/algorithm-complexity.md",
@@ -173,7 +173,7 @@ export function getRoutes() {
             {
               "depth": 2,
               "value": "一、时间复杂度",
-              "heading": "一、时间复杂度"
+              "heading": "一时间复杂度"
             },
             {
               "depth": 3,
@@ -193,17 +193,17 @@ export function getRoutes() {
             {
               "depth": 3,
               "value": "平方阶O(n²)",
-              "heading": "平方阶on²"
+              "heading": "平方阶on"
             },
             {
               "depth": 3,
               "value": "立方阶O(n³)、K次方阶O(n^k)",
-              "heading": "立方阶on³、k次方阶onk"
+              "heading": "立方阶onk次方阶onk"
             },
             {
               "depth": 2,
               "value": "二、空间复杂度",
-              "heading": "二、空间复杂度"
+              "heading": "二空间复杂度"
             },
             {
               "depth": 3,
@@ -222,11 +222,11 @@ export function getRoutes() {
             "title": "力扣"
           }
         },
-        "title": "算法的时间与空间复杂度"
+        "title": "算法的时间与空间复杂度 - 高级前端进阶"
       },
       {
         "path": "/algorithm/leecode",
-        "component": require('C:/workpalce/blog/docs/algorithm/leecode.md').default,
+        "component": require('D:/workplace/blog/docs/algorithm/leecode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/algorithm/leecode.md",
@@ -244,7 +244,7 @@ export function getRoutes() {
             {
               "depth": 2,
               "value": "1、两数之和",
-              "heading": "1、两数之和"
+              "heading": "1两数之和"
             },
             {
               "depth": 3,
@@ -279,7 +279,7 @@ export function getRoutes() {
             {
               "depth": 2,
               "value": "20、有效的括号",
-              "heading": "20、有效的括号"
+              "heading": "20有效的括号"
             },
             {
               "depth": 3,
@@ -294,15 +294,15 @@ export function getRoutes() {
           ],
           "title": "🔥LeetCode 热题 HOT 100"
         },
-        "title": "🔥LeetCode 热题 HOT 100"
+        "title": "🔥LeetCode 热题 HOT 100 - 高级前端进阶"
       },
       {
         "path": "/articles/article1",
-        "component": require('C:/workpalce/blog/docs/articles/article1.md').default,
+        "component": require('D:/workplace/blog/docs/articles/article1.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/articles/article1.md",
-          "updatedTime": 1623483496000,
+          "updatedTime": 1636286458000,
           "nav": {
             "title": "博客",
             "order": 1,
@@ -317,46 +317,36 @@ export function getRoutes() {
             {
               "depth": 2,
               "value": "一、创建静态站点脚手架",
-              "heading": "一、创建静态站点脚手架"
+              "heading": "一创建静态站点脚手架"
             },
             {
               "depth": 2,
               "value": "二、创建 github 仓库",
-              "heading": "二、创建-github-仓库"
+              "heading": "二创建-github-仓库"
             },
             {
               "depth": 3,
               "value": "1、创建 blog 仓库",
-              "heading": "1、创建-blog-仓库"
+              "heading": "1创建-blog-仓库"
             },
             {
               "depth": 3,
-              "value": "2、创建 [username].github.io 仓库",
-              "heading": "2、创建-usernamegithubio-仓库"
+              "value": "2、创建 gh-pages 分支",
+              "heading": "2创建-gh-pages-分支"
             },
             {
               "depth": 2,
-              "value": "三、Github 生成访问令牌",
-              "heading": "三、github-生成访问令牌"
-            },
-            {
-              "depth": 2,
-              "value": "四、配置 github Actions 流水线",
-              "heading": "四、配置-github-actions-流水线"
-            },
-            {
-              "depth": 2,
-              "value": "五、触发 CI",
-              "heading": "五、触发-ci"
+              "value": "三、配置 github Actions 流水线",
+              "heading": "三配置-github-actions-流水线"
             }
           ],
           "title": "使用 GitHub Actions 实现 Dumi 博客自动化部署"
         },
-        "title": "使用 GitHub Actions 实现 Dumi 博客自动化部署"
+        "title": "使用 GitHub Actions 实现 Dumi 博客自动化部署 - 高级前端进阶"
       },
       {
         "path": "/articles/docker",
-        "component": require('C:/workpalce/blog/docs/articles/docker.md').default,
+        "component": require('D:/workplace/blog/docs/articles/docker.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/articles/docker.md",
@@ -375,12 +365,12 @@ export function getRoutes() {
             {
               "depth": 2,
               "value": "1.写在前面：",
-              "heading": "1写在前面："
+              "heading": "1写在前面"
             },
             {
               "depth": 2,
               "value": "2.具体实现：",
-              "heading": "2具体实现："
+              "heading": "2具体实现"
             },
             {
               "depth": 2,
@@ -470,7 +460,7 @@ export function getRoutes() {
             {
               "depth": 3,
               "value": "6.1 查看 nodeserver 容器的 ip 地址：",
-              "heading": "61-查看-nodeserver-容器的-ip-地址："
+              "heading": "61-查看-nodeserver-容器的-ip-地址"
             },
             {
               "depth": 3,
@@ -514,11 +504,11 @@ export function getRoutes() {
             "title": "博客"
           }
         },
-        "title": "[手把手系列之]Docker 部署 vue 项目"
+        "title": "[手把手系列之]Docker 部署 vue 项目 - 高级前端进阶"
       },
       {
         "path": "/articles/front-end-knowledge-system-map",
-        "component": require('C:/workpalce/blog/docs/articles/front-end-knowledge-system-map.md').default,
+        "component": require('D:/workplace/blog/docs/articles/front-end-knowledge-system-map.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/articles/front-end-knowledge-system-map.md",
@@ -536,11 +526,11 @@ export function getRoutes() {
             "title": "博客"
           }
         },
-        "title": "前端知识体系图谱"
+        "title": "前端知识体系图谱 - 高级前端进阶"
       },
       {
         "path": "/articles/interview-knowledge",
-        "component": require('C:/workpalce/blog/docs/articles/interview-knowledge.md').default,
+        "component": require('D:/workplace/blog/docs/articles/interview-knowledge.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/articles/interview-knowledge.md",
@@ -623,11 +613,11 @@ export function getRoutes() {
             "title": "博客"
           }
         },
-        "title": "面试知识点"
+        "title": "面试知识点 - 高级前端进阶"
       },
       {
         "path": "/articles/learning-plan",
-        "component": require('C:/workpalce/blog/docs/articles/learning-plan.md').default,
+        "component": require('D:/workplace/blog/docs/articles/learning-plan.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/articles/learning-plan.md",
@@ -655,15 +645,15 @@ export function getRoutes() {
             "title": "博客"
           }
         },
-        "title": "学习计划"
+        "title": "学习计划 - 高级前端进阶"
       },
       {
         "path": "/articles/observer vs pub-sub pattern",
-        "component": require('C:/workpalce/blog/docs/articles/Observer vs Pub-Sub pattern.md').default,
+        "component": require('D:/workplace/blog/docs/articles/Observer vs Pub-Sub pattern.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/articles/Observer vs Pub-Sub pattern.md",
-          "updatedTime": 1614404609829,
+          "updatedTime": 1655277933501,
           "slugs": [
             {
               "depth": 1,
@@ -692,11 +682,11 @@ export function getRoutes() {
             "title": "博客"
           }
         },
-        "title": "观察者模式 和 发布-订阅 模式"
+        "title": "观察者模式 和 发布-订阅 模式 - 高级前端进阶"
       },
       {
         "path": "/design-patterns/adapter-mode",
-        "component": require('C:/workpalce/blog/docs/design-patterns/adapter-mode.md').default,
+        "component": require('D:/workplace/blog/docs/design-patterns/adapter-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/adapter-mode.md",
@@ -714,11 +704,11 @@ export function getRoutes() {
             "title": "设计模式"
           }
         },
-        "title": "适配器模式"
+        "title": "适配器模式 - 高级前端进阶"
       },
       {
         "path": "/design-patterns/decorator-mode",
-        "component": require('C:/workpalce/blog/docs/design-patterns/decorator-mode.md').default,
+        "component": require('D:/workplace/blog/docs/design-patterns/decorator-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/decorator-mode.md",
@@ -741,11 +731,11 @@ export function getRoutes() {
             "title": "设计模式"
           }
         },
-        "title": "装饰器模式"
+        "title": "装饰器模式 - 高级前端进阶"
       },
       {
         "path": "/design-patterns/factory-mode",
-        "component": require('C:/workpalce/blog/docs/design-patterns/factory-mode.md').default,
+        "component": require('D:/workplace/blog/docs/design-patterns/factory-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/factory-mode.md",
@@ -768,11 +758,11 @@ export function getRoutes() {
             "title": "设计模式"
           }
         },
-        "title": "简单工厂模式"
+        "title": "简单工厂模式 - 高级前端进阶"
       },
       {
         "path": "/design-patterns",
-        "component": require('C:/workpalce/blog/docs/design-patterns/index.md').default,
+        "component": require('D:/workplace/blog/docs/design-patterns/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/index.md",
@@ -795,11 +785,11 @@ export function getRoutes() {
           ],
           "title": "设计模式"
         },
-        "title": "设计模式"
+        "title": "设计模式 - 高级前端进阶"
       },
       {
         "path": "/design-patterns/observer-mode",
-        "component": require('C:/workpalce/blog/docs/design-patterns/observer-mode.md').default,
+        "component": require('D:/workplace/blog/docs/design-patterns/observer-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/observer-mode.md",
@@ -817,11 +807,11 @@ export function getRoutes() {
             "title": "设计模式"
           }
         },
-        "title": "观察者模式"
+        "title": "观察者模式 - 高级前端进阶"
       },
       {
         "path": "/design-patterns/prototype-mode",
-        "component": require('C:/workpalce/blog/docs/design-patterns/prototype-mode.md').default,
+        "component": require('D:/workplace/blog/docs/design-patterns/prototype-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/prototype-mode.md",
@@ -839,11 +829,11 @@ export function getRoutes() {
             "title": "设计模式"
           }
         },
-        "title": "原型模式"
+        "title": "原型模式 - 高级前端进阶"
       },
       {
         "path": "/design-patterns/publish-subscribe-mode",
-        "component": require('C:/workpalce/blog/docs/design-patterns/publish-subscribe-mode.md').default,
+        "component": require('D:/workplace/blog/docs/design-patterns/publish-subscribe-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/publish-subscribe-mode.md",
@@ -866,11 +856,11 @@ export function getRoutes() {
             "title": "设计模式"
           }
         },
-        "title": "发布订阅模式"
+        "title": "发布订阅模式 - 高级前端进阶"
       },
       {
         "path": "/design-patterns/singleton-mode",
-        "component": require('C:/workpalce/blog/docs/design-patterns/singleton-mode.md').default,
+        "component": require('D:/workplace/blog/docs/design-patterns/singleton-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/singleton-mode.md",
@@ -888,11 +878,11 @@ export function getRoutes() {
             "title": "设计模式"
           }
         },
-        "title": "单例模式"
+        "title": "单例模式 - 高级前端进阶"
       },
       {
         "path": "/design-patterns/strategy-mode",
-        "component": require('C:/workpalce/blog/docs/design-patterns/strategy-mode.md').default,
+        "component": require('D:/workplace/blog/docs/design-patterns/strategy-mode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/design-patterns/strategy-mode.md",
@@ -915,11 +905,11 @@ export function getRoutes() {
             "title": "设计模式"
           }
         },
-        "title": "策略模式"
+        "title": "策略模式 - 高级前端进阶"
       },
       {
         "path": "/interview/html",
-        "component": require('C:/workpalce/blog/docs/interview/html.md').default,
+        "component": require('D:/workplace/blog/docs/interview/html.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/interview/html.md",
@@ -937,11 +927,11 @@ export function getRoutes() {
             "title": "面试题"
           }
         },
-        "title": "html"
+        "title": "html - 高级前端进阶"
       },
       {
         "path": "/interview",
-        "component": require('C:/workpalce/blog/docs/interview/index.md').default,
+        "component": require('D:/workplace/blog/docs/interview/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/interview/index.md",
@@ -959,37 +949,15 @@ export function getRoutes() {
           ],
           "title": "面试题"
         },
-        "title": "面试题"
-      },
-      {
-        "path": "/javascript/for-each",
-        "component": require('C:/workpalce/blog/docs/javascript/forEach.md').default,
-        "exact": true,
-        "meta": {
-          "filePath": "docs/javascript/forEach.md",
-          "updatedTime": 1619262561000,
-          "slugs": [
-            {
-              "depth": 1,
-              "value": "手动实现 forEach 函数",
-              "heading": "手动实现-foreach-函数"
-            }
-          ],
-          "title": "手动实现 forEach 函数",
-          "nav": {
-            "path": "/javascript",
-            "title": "Javascript"
-          }
-        },
-        "title": "手动实现 forEach 函数"
+        "title": "面试题 - 高级前端进阶"
       },
       {
         "path": "/javascript/higher-order function",
-        "component": require('C:/workpalce/blog/docs/javascript/higher-order function.md').default,
+        "component": require('D:/workplace/blog/docs/javascript/higher-order function.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/higher-order function.md",
-          "updatedTime": 1612536433264,
+          "updatedTime": 1655277933511,
           "slugs": [
             {
               "depth": 1,
@@ -1004,12 +972,12 @@ export function getRoutes() {
             {
               "depth": 2,
               "value": "1、AOP 切片编程",
-              "heading": "1、aop-切片编程"
+              "heading": "1aop-切片编程"
             },
             {
               "depth": 1,
               "value": "2、函数柯里化",
-              "heading": "2、函数柯里化"
+              "heading": "2函数柯里化"
             },
             {
               "depth": 2,
@@ -1019,27 +987,27 @@ export function getRoutes() {
             {
               "depth": 2,
               "value": "2.2、柯里化通用式",
-              "heading": "22、柯里化通用式"
+              "heading": "22柯里化通用式"
             },
             {
               "depth": 2,
               "value": "2.3、柯里化与 bind",
-              "heading": "23、柯里化与-bind"
+              "heading": "23柯里化与-bind"
             },
             {
               "depth": 1,
               "value": "3、反柯里化",
-              "heading": "3、反柯里化"
+              "heading": "3反柯里化"
             },
             {
               "depth": 2,
               "value": "3.1、反柯里化通用式",
-              "heading": "31、反柯里化通用式"
+              "heading": "31反柯里化通用式"
             },
             {
               "depth": 3,
               "value": "2、通过函数调用生成反柯里化函数",
-              "heading": "2、通过函数调用生成反柯里化函数"
+              "heading": "2通过函数调用生成反柯里化函数"
             },
             {
               "depth": 2,
@@ -1053,33 +1021,11 @@ export function getRoutes() {
             "title": "Javascript"
           }
         },
-        "title": "高阶函数"
-      },
-      {
-        "path": "/javascript/map",
-        "component": require('C:/workpalce/blog/docs/javascript/map.md').default,
-        "exact": true,
-        "meta": {
-          "filePath": "docs/javascript/map.md",
-          "updatedTime": 1619262561000,
-          "slugs": [
-            {
-              "depth": 1,
-              "value": "手动实现 map 函数",
-              "heading": "手动实现-map-函数"
-            }
-          ],
-          "title": "手动实现 map 函数",
-          "nav": {
-            "path": "/javascript",
-            "title": "Javascript"
-          }
-        },
-        "title": "手动实现 map 函数"
+        "title": "高阶函数 - 高级前端进阶"
       },
       {
         "path": "/javascript/prototype",
-        "component": require('C:/workpalce/blog/docs/javascript/prototype.md').default,
+        "component": require('D:/workplace/blog/docs/javascript/prototype.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/prototype.md",
@@ -1088,7 +1034,7 @@ export function getRoutes() {
             {
               "depth": 1,
               "value": "原型、原型链和继承",
-              "heading": "原型、原型链和继承"
+              "heading": "原型原型链和继承"
             },
             {
               "depth": 1,
@@ -1098,12 +1044,12 @@ export function getRoutes() {
             {
               "depth": 2,
               "value": "什么是原型？",
-              "heading": "什么是原型？"
+              "heading": "什么是原型"
             },
             {
               "depth": 2,
               "value": "什么式原型链？",
-              "heading": "什么式原型链？"
+              "heading": "什么式原型链"
             },
             {
               "depth": 2,
@@ -1142,33 +1088,58 @@ export function getRoutes() {
             "title": "Javascript"
           }
         },
-        "title": "原型、原型链和继承"
+        "title": "原型、原型链和继承 - 高级前端进阶"
       },
       {
-        "path": "/javascript/reduce",
-        "component": require('C:/workpalce/blog/docs/javascript/reduce.md').default,
+        "path": "/javascript/write",
+        "component": require('D:/workplace/blog/docs/javascript/write.md').default,
         "exact": true,
         "meta": {
-          "filePath": "docs/javascript/reduce.md",
-          "updatedTime": 1619258418000,
+          "filePath": "docs/javascript/write.md",
+          "updatedTime": 1655286944570,
           "slugs": [
             {
               "depth": 1,
-              "value": "手动实现 reduce 函数",
-              "heading": "手动实现-reduce-函数"
+              "value": "JavaScript 高级之手写系列",
+              "heading": "javascript-高级之手写系列"
+            },
+            {
+              "depth": 2,
+              "value": "1、forEach",
+              "heading": "1foreach"
+            },
+            {
+              "depth": 2,
+              "value": "2、map",
+              "heading": "2map"
+            },
+            {
+              "depth": 2,
+              "value": "3、reduce",
+              "heading": "3reduce"
+            },
+            {
+              "depth": 2,
+              "value": "4、new",
+              "heading": "4new"
+            },
+            {
+              "depth": 2,
+              "value": "5、call",
+              "heading": "5call"
             }
           ],
-          "title": "手动实现 reduce 函数",
+          "title": "JavaScript 高级之手写系列",
           "nav": {
             "path": "/javascript",
             "title": "Javascript"
           }
         },
-        "title": "手动实现 reduce 函数"
+        "title": "JavaScript 高级之手写系列 - 高级前端进阶"
       },
       {
         "path": "/learning/2021learning-plan",
-        "component": require('C:/workpalce/blog/docs/learning/2021learning-plan.md').default,
+        "component": require('D:/workplace/blog/docs/learning/2021learning-plan.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/learning/2021learning-plan.md",
@@ -1186,11 +1157,11 @@ export function getRoutes() {
             "title": "Learning"
           }
         },
-        "title": "2021 年学习记录"
+        "title": "2021 年学习记录 - 高级前端进阶"
       },
       {
         "path": "/learning/collection",
-        "component": require('C:/workpalce/blog/docs/learning/collection.md').default,
+        "component": require('D:/workplace/blog/docs/learning/collection.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/learning/collection.md",
@@ -1223,11 +1194,11 @@ export function getRoutes() {
             "title": "Learning"
           }
         },
-        "title": "收集的学习资料"
+        "title": "收集的学习资料 - 高级前端进阶"
       },
       {
         "path": "/learning",
-        "component": require('C:/workpalce/blog/docs/learning/index.md').default,
+        "component": require('D:/workplace/blog/docs/learning/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/learning/index.md",
@@ -1245,27 +1216,27 @@ export function getRoutes() {
             "title": "Learning"
           }
         },
-        "title": "Learning"
+        "title": "Learning - 高级前端进阶"
       },
       {
         "path": "/micro-frontends",
-        "component": require('C:/workpalce/blog/docs/Micro-frontends/index.md').default,
+        "component": require('D:/workplace/blog/docs/Micro-frontends/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Micro-frontends/index.md",
           "updatedTime": 1610618242000,
           "slugs": [],
-          "title": "Index",
           "nav": {
             "path": "/micro-frontends",
             "title": "Micro-frontends"
-          }
+          },
+          "title": "Micro-frontends"
         },
-        "title": "Index"
+        "title": "Micro-frontends - 高级前端进阶"
       },
       {
         "path": "/micro-frontends/system-js",
-        "component": require('C:/workpalce/blog/docs/Micro-frontends/SystemJS.md').default,
+        "component": require('D:/workplace/blog/docs/Micro-frontends/SystemJS.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Micro-frontends/SystemJS.md",
@@ -1313,11 +1284,11 @@ export function getRoutes() {
             "title": "Micro-frontends"
           }
         },
-        "title": "SystemJS 实战教程"
+        "title": "SystemJS 实战教程 - 高级前端进阶"
       },
       {
         "path": "/performance",
-        "component": require('C:/workpalce/blog/docs/performance/index.md').default,
+        "component": require('D:/workplace/blog/docs/performance/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/performance/index.md",
@@ -1335,11 +1306,11 @@ export function getRoutes() {
           ],
           "title": "性能优化总括"
         },
-        "title": "性能优化总括"
+        "title": "性能优化总括 - 高级前端进阶"
       },
       {
         "path": "/performance/time-slice",
-        "component": require('C:/workpalce/blog/docs/performance/time-slice.md').default,
+        "component": require('D:/workplace/blog/docs/performance/time-slice.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/performance/time-slice.md",
@@ -1358,7 +1329,7 @@ export function getRoutes() {
             {
               "depth": 2,
               "value": "最粗暴的做法（一次性渲染）",
-              "heading": "最粗暴的做法（一次性渲染）"
+              "heading": "最粗暴的做法一次性渲染"
             },
             {
               "depth": 2,
@@ -1397,11 +1368,11 @@ export function getRoutes() {
             "title": "性能优化"
           }
         },
-        "title": "如何高性能的渲染十万条数据(时间分片)"
+        "title": "如何高性能的渲染十万条数据(时间分片) - 高级前端进阶"
       },
       {
         "path": "/performance/virtual-scroll",
-        "component": require('C:/workpalce/blog/docs/performance/virtual-scroll.md').default,
+        "component": require('D:/workplace/blog/docs/performance/virtual-scroll.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/performance/virtual-scroll.md",
@@ -1459,11 +1430,11 @@ export function getRoutes() {
             "title": "性能优化"
           }
         },
-        "title": "如何高性能的渲染十万条数据(虚拟列表)"
+        "title": "如何高性能的渲染十万条数据(虚拟列表) - 高级前端进阶"
       },
       {
         "path": "/react",
-        "component": require('C:/workpalce/blog/docs/React/index.md').default,
+        "component": require('D:/workplace/blog/docs/React/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/React/index.md",
@@ -1522,17 +1493,17 @@ export function getRoutes() {
             {
               "depth": 3,
               "value": "1、为 DOM 元素添加 ref",
-              "heading": "1、为-dom-元素添加-ref"
+              "heading": "1为-dom-元素添加-ref"
             },
             {
               "depth": 3,
               "value": "2、为 class 组件添加 Ref",
-              "heading": "2、为-class-组件添加-ref"
+              "heading": "2为-class-组件添加-ref"
             },
             {
               "depth": 3,
               "value": "3、ref转发",
-              "heading": "3、ref转发"
+              "heading": "3ref转发"
             },
             {
               "depth": 2,
@@ -1587,12 +1558,12 @@ export function getRoutes() {
             {
               "depth": 2,
               "value": "高阶组件 （HOC Component）",
-              "heading": "高阶组件-（hoc-component）"
+              "heading": "高阶组件-hoc-component"
             },
             {
               "depth": 4,
               "value": "高阶组件的应用：",
-              "heading": "高阶组件的应用："
+              "heading": "高阶组件的应用"
             },
             {
               "depth": 2,
@@ -1602,22 +1573,22 @@ export function getRoutes() {
             {
               "depth": 3,
               "value": "1、原生实现",
-              "heading": "1、原生实现"
+              "heading": "1原生实现"
             },
             {
               "depth": 3,
               "value": "2、children",
-              "heading": "2、children"
+              "heading": "2children"
             },
             {
               "depth": 3,
               "value": "3、render属性",
-              "heading": "3、render属性"
+              "heading": "3render属性"
             },
             {
               "depth": 3,
               "value": "4、HOC",
-              "heading": "4、hoc"
+              "heading": "4hoc"
             }
           ],
           "title": "React 进阶",
@@ -1626,11 +1597,11 @@ export function getRoutes() {
             "title": "React"
           }
         },
-        "title": "React 进阶"
+        "title": "React 进阶 - 高级前端进阶"
       },
       {
         "path": "/react/react-source",
-        "component": require('C:/workpalce/blog/docs/React/react-source.md').default,
+        "component": require('D:/workplace/blog/docs/React/react-source.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/React/react-source.md",
@@ -1654,7 +1625,7 @@ export function getRoutes() {
             {
               "depth": 3,
               "value": "实现 createDOM()、render()",
-              "heading": "实现-createdom、render"
+              "heading": "实现-createdomrender"
             },
             {
               "depth": 4,
@@ -1664,7 +1635,7 @@ export function getRoutes() {
             {
               "depth": 4,
               "value": "createDOM()、render() 源码实现",
-              "heading": "createdom、render-源码实现"
+              "heading": "createdomrender-源码实现"
             },
             {
               "depth": 2,
@@ -1708,11 +1679,11 @@ export function getRoutes() {
             "title": "React"
           }
         },
-        "title": "React 源码"
+        "title": "React 源码 - 高级前端进阶"
       },
       {
         "path": "/vue/virtual-dom",
-        "component": require('C:/workpalce/blog/docs/Vue/virtualDOM.md').default,
+        "component": require('D:/workplace/blog/docs/Vue/virtualDOM.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Vue/virtualDOM.md",
@@ -1750,11 +1721,11 @@ export function getRoutes() {
             "title": "Vue"
           }
         },
-        "title": "虚拟 DOM"
+        "title": "虚拟 DOM - 高级前端进阶"
       },
       {
         "path": "/vue/vue-i18n",
-        "component": require('C:/workpalce/blog/docs/Vue/vue-i18n.md').default,
+        "component": require('D:/workplace/blog/docs/Vue/vue-i18n.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Vue/vue-i18n.md",
@@ -1807,11 +1778,11 @@ export function getRoutes() {
             "title": "Vue"
           }
         },
-        "title": "vue-i18n"
+        "title": "vue-i18n - 高级前端进阶"
       },
       {
         "path": "/vue/vue-router",
-        "component": require('C:/workpalce/blog/docs/Vue/vue-router.md').default,
+        "component": require('D:/workplace/blog/docs/Vue/vue-router.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Vue/vue-router.md",
@@ -1854,11 +1825,11 @@ export function getRoutes() {
             "title": "Vue"
           }
         },
-        "title": "Vue-Router 源码解析"
+        "title": "Vue-Router 源码解析 - 高级前端进阶"
       },
       {
         "path": "/vue/vue3",
-        "component": require('C:/workpalce/blog/docs/Vue/vue3.0-1.md').default,
+        "component": require('D:/workplace/blog/docs/Vue/vue3.0-1.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/Vue/vue3.0-1.md",
@@ -1931,7 +1902,7 @@ export function getRoutes() {
             "title": "Vue"
           }
         },
-        "title": "vue3-app"
+        "title": "vue3-app - 高级前端进阶"
       },
       {
         "path": "/algorithm",
@@ -1951,7 +1922,7 @@ export function getRoutes() {
         "path": "/javascript",
         "meta": {},
         "exact": true,
-        "redirect": "/javascript/for-each"
+        "redirect": "/javascript/higher-order function"
       },
       {
         "path": "/vue",
@@ -1960,7 +1931,7 @@ export function getRoutes() {
         "redirect": "/vue/virtual-dom"
       }
     ],
-    "title": "hefeng6500 的博客",
+    "title": "高级前端进阶",
     "component": (props) => props.children
   }
 ];
