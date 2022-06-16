@@ -1,6 +1,6 @@
 {
   "menus": {
-    "en-US": {
+    "zh-CN": {
       "*": [
         {
           "path": "/",
@@ -227,12 +227,12 @@
   },
   "locales": [
     {
-      "name": "en-US",
-      "label": "English"
+      "name": "zh-CN",
+      "label": "中文"
     }
   ],
   "navs": {
-    "en-US": [
+    "zh-CN": [
       {
         "title": "博客",
         "order": 1,

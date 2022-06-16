@@ -57,7 +57,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/index.md",
-          "updatedTime": 1635655890000,
+          "updatedTime": 1655287147000,
           "hero": {
             "title": "阿里 P6 进阶之路",
             "desc": "<div class=\"markdown\"><p>🍙 To be an overflow stack engineer</p></div>",
@@ -1096,7 +1096,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/write.md",
-          "updatedTime": 1655286944570,
+          "updatedTime": 1655287147000,
           "slugs": [
             {
               "depth": 1,
