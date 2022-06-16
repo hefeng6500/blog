@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import config from '@@/dumi/config';
 import demos from '@@/dumi/demos';

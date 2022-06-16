@@ -9,9 +9,17 @@ export default defineConfig({
   navs: [
     null, // A null value means to retain the conventionally generated navigation and only do incremental configuration
     {
-      title: 'vue3.0-analysis',
+      title: '算法',
+      path: 'https://hefeng6500.github.io/interview-blog',
+    },
+    {
+      title: 'vue3源码',
       path: 'https://hefeng6500.github.io/vue3.0-analysis/',
     },
+  ],
+  locales: [
+    ['zh-CN', '中文'],
+    ['en-US', 'English'],
   ],
   styles: [
     `

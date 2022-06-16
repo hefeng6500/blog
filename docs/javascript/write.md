@@ -149,3 +149,68 @@ Function.prototype.call = function(context, ...rest) {
   return result;
 };
 ```
+
+## 6、apply
+
+```js
+Function.prototype.apply = function(context, argsArray) {
+  return this.call(context, ...argsArray);
+};
+```
+
+## 7、bind
+
+```js
+Function.prototype.bind = function(context, ...args) {
+  return (...newArgs) => this.apply(context, ...args, ...newArgs);
+};
+```
+
+bind 还有一个特点，源于：冴羽博客：[JavaScript 深入之 bind 的模拟实现](https://github.com/mqyqingfeng/Blog/issues/12)
+
+> 一个绑定函数也能使用 new 操作符创建对象：这种行为就像把原函数当成构造器。提供的 this 值被忽略，同时调用时的参数被提供给模拟函数。
+
+也就是说当 bind 返回的函数作为构造函数的时候，bind 时指定的 this 值会失效，但传入的参数依然生效。举个例子：
+
+```js
+var value = 2;
+
+var foo = {
+  value: 1,
+};
+
+function bar(name, age) {
+  this.habit = 'shopping';
+  console.log(this.value);
+  console.log(name);
+  console.log(age);
+}
+
+bar.prototype.friend = 'kevin';
+
+var bindFoo = bar.bind(foo, 'daisy');
+
+var obj = new bindFoo('18');
+// undefined
+// daisy
+// 18
+console.log(obj.habit);
+console.log(obj.friend);
+// shopping
+// kevin
+```
+
+bind 优化版本
+
+```js
+Function.prototype.bind = function(context, ...args) {
+  const self = this;
+  const fn = function(...newArgs) {
+    self.apply(this instanceof fn ? this : context, args.concat(newArgs));
+  };
+
+  fn.prototype = Object.create(this.prototype);
+
+  return fn;
+};
+```

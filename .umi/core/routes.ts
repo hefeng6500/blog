@@ -10,14 +10,20 @@ export function getRoutes() {
     "path": "/~demos/:uuid",
     "layout": false,
     "wrappers": [require('../dumi/layout').default],
-    "component": (props) => {
+    "component": ((props) => {
+        const React = require('react');
         const { default: getDemoRenderArgs } = require('D:/workplace/blog/node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs');
         const { default: Previewer } = require('dumi-theme-default/es/builtins/Previewer.js');
         const { usePrefersColor, context } = require('dumi/theme');
 
         
       const { demos } = React.useContext(context);
-      const renderArgs = getDemoRenderArgs(props, demos);
+      const [renderArgs, setRenderArgs] = React.useState([]);
+
+      // update render args when props changed
+      React.useLayoutEffect(() => {
+        setRenderArgs(getDemoRenderArgs(props, demos));
+      }, [props.match.params.uuid, props.location.query.wrapper, props.location.query.capture]);
 
       // for listen prefers-color-schema media change in demo single route
       usePrefersColor();
@@ -39,7 +45,7 @@ export function getRoutes() {
           return `Demo ${props.match.params.uuid} not found :(`;
       }
     
-        }
+        })
   },
   {
     "path": "/_demos/:uuid",
@@ -64,7 +70,7 @@ export function getRoutes() {
             "actions": [
               {
                 "text": "开始 →",
-                "link": "/getting-started"
+                "link": "/learning"
               }
             ]
           },
@@ -1127,6 +1133,16 @@ export function getRoutes() {
               "depth": 2,
               "value": "5、call",
               "heading": "5call"
+            },
+            {
+              "depth": 2,
+              "value": "6、apply",
+              "heading": "6apply"
+            },
+            {
+              "depth": 2,
+              "value": "7、bind",
+              "heading": "7bind"
             }
           ],
           "title": "JavaScript 高级之手写系列",

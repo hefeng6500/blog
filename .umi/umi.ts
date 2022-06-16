@@ -5,7 +5,7 @@ import { plugin } from './core/plugin';
 import './core/pluginRegister';
 import { createHistory } from './core/history';
 import { ApplyPluginsType } from 'D:/workplace/blog/node_modules/@umijs/runtime';
-import { renderClient } from 'D:/workplace/blog/node_modules/@umijs/renderer-react';
+import { renderClient } from 'D:/workplace/blog/node_modules/@umijs/renderer-react/dist/index.js';
 import { getRoutes } from './core/routes';
 
 
@@ -37,7 +37,7 @@ export default clientRender();
 
 
     window.g_umi = {
-      version: '3.5.20',
+      version: '3.5.26',
     };
   
 

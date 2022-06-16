@@ -275,7 +275,11 @@
         "title": "设计模式"
       },
       {
-        "title": "vue3.0-analysis",
+        "title": "算法",
+        "path": "https://hefeng6500.github.io/interview-blog"
+      },
+      {
+        "title": "vue3源码",
         "path": "https://hefeng6500.github.io/vue3.0-analysis/"
       }
     ]

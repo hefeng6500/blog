@@ -1,21 +1,36 @@
-Function.prototype.myCall = function(context, ...rest) {
-  const fn = Symbol();
+var value = 2;
 
-  context[fn] = this;
-
-  const result = context[fn](...rest);
-
-  delete context[fn];
-
-  return result;
+var foo = {
+  value: 1,
 };
 
-function test() {
-  console.log(this.a);
+function bar(name, age) {
+  this.habit = 'shopping';
+  console.log(this.value);
+  console.log(name);
+  console.log(age);
 }
 
-const obj = {
-  a: 100,
+bar.prototype.friend = 'kevin';
+
+Function.prototype.bind = function(context, ...args) {
+  const self = this;
+  const fBound = function(...newArgs) {
+    self.apply(this instanceof fBound ? this : context, args.concat(newArgs));
+  };
+
+  fBound.prototype = Object.create(this.prototype);
+
+  return fBound;
 };
 
-test.myCall(obj);
+var bindFoo = bar.bind(foo, 'daisy');
+
+var obj = new bindFoo('18');
+// undefined
+// daisy
+// 18
+console.log(obj.habit);
+console.log(obj.friend);
+// shopping
+// kevin

@@ -4,7 +4,7 @@ hero:
   desc: 🍙 To be an overflow stack engineer
   actions:
     - text: 开始 →
-      link: /getting-started
+      link: /learning
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
     title: Javascript 语言进阶
