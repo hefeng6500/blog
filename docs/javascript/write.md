@@ -404,17 +404,20 @@ class Promise {
     this.onRejectedCallbacks = [];
 
     const resolve = value => {
+      if (value instanceof Promise) {
+        return value.then(resolve, reject);
+      }
       if (this.state === Promise.PENDING) {
         this.value = value;
         this.state = Promise.RESOLVED;
-        this.onResolvedCallbacks.forEach(fn => fn(this.value));
+        this.onResolvedCallbacks.forEach(fn => fn());
       }
     };
     const reject = reason => {
       if (this.state === Promise.PENDING) {
         this.reason = reason;
         this.state = Promise.REJECTED;
-        this.onRejectedCallbacks.forEach(fn => fn(this.reason));
+        this.onRejectedCallbacks.forEach(fn => fn());
       }
     };
 
@@ -573,3 +576,19 @@ Promise.deferred = function() {
 
 module.exports = Promise;
 ```
+
+## 9、防抖
+
+## 10、节流
+
+## 11、函数柯里化
+
+## 12、函数反柯里化
+
+## 13、compose
+
+## 14、sleep
+
+## 15、delay
+
+## 16、LazyMan
