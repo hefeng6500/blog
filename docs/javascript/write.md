@@ -882,16 +882,186 @@ module.exports = Promise;
 
 ## 9、防抖
 
+```js
+function debounce(fn, options) {
+  const { delay } = options;
+  let timer;
+
+  return function(...args) {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      fn.call(this, ...args);
+      timer = null;
+    }, wait);
+  };
+}
+```
+
 ## 10、节流
+
+```js
+function throttle(fn, options) {
+  const { delay } = options;
+  let timer;
+
+  return function(...args) {
+    if (timer) return;
+
+    timer = setTimeout(() => {
+      fn.call(this, ...args);
+    }, delay);
+  };
+}
+```
 
 ## 11、函数柯里化
 
+**柯里化** 是一种转换，将 `f(a,b,c)` 转换为可以被以 `f(a)(b)(c)` 的形式进行调用。JavaScript 实现通常都保持该函数可以被正常调用，并且如果参数数量不足，则返回**偏函数**。
+
+```js
+function curry(func) {
+  return function curried(...args) {
+    if (args.length >= func.length) {
+      return func.call(this, ...args);
+    } else {
+      return function(...args2) {
+        return curried.call(this, ...args, ...args2);
+      };
+    }
+  };
+}
+```
+
+用例：
+
+```js
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+let curriedSum = curry(sum);
+
+alert(curriedSum(1, 2, 3)); // 6，仍然可以被正常调用
+alert(curriedSum(1)(2, 3)); // 6，对第一个参数的柯里化
+alert(curriedSum(1)(2)(3)); // 6，全柯里化
+```
+
 ## 12、函数反柯里化
 
-## 13、compose
+反柯里化的思想与柯里化正好相反，如果说柯里化的过程是将函数拆分成功能更具体化的函数，那反柯里化的作用则在于扩大函数的适用性，使本来作为特定对象所拥有的功能函数可以被任意对象所使用。
 
-## 14、sleep
+```js
+function unCarry(func) {
+  return function(...args) {
+    return func.call(...args);
+  };
+}
+```
 
-## 15、delay
+一行代码：
 
-## 16、LazyMan
+```js
+const unCarry = func => (...args) => func.apply(args);
+```
+
+用例：
+
+```js
+const obj = {
+  name: 'yang',
+  age: 18,
+};
+
+function F() {}
+
+// 拼接属性值的方法
+F.prototype.concatProps = function() {
+  let args = Array.from(arguments);
+  return args.reduce((prev, next) => `${this[prev]}&${this[next]}`);
+};
+
+let concatProps = unCurry(F.prototype.concatProps);
+
+console.log(concatProps(obj, 'name', 'age')); // yang&18
+```
+
+## 13、pipe
+
+```js
+const pipe = (...fns) => x => fns.reduce((v, f) => f(v), x);
+```
+
+用例：
+
+```js
+const getName = person => person.name;
+const uppercase = string => string.toUpperCase();
+const get6Characters = string => string.substring(0, 6);
+const reverse = string =>
+  string
+    .split('')
+    .reverse()
+    .join('');
+
+pipe(getName, uppercase, get6Characters, reverse)({ name: 'Buckethead' }); // 'TEKCUB'
+```
+
+## 14、compose
+
+与 pipe 方向相反，使用 reduceRight
+
+```js
+const compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x);
+```
+
+## 15、sleep
+
+```js
+function sleep(wait) {
+  return new Promise(resolve => setTimeout(resolve, wait));
+}
+```
+
+用例：
+
+```js
+console.log('Hello');
+sleep(2000).then(() => {
+  console.log('World!');
+});
+```
+
+## 16、delay
+
+```js
+function delay(fn, wait, ...args) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      // resolve(fn(...args));
+
+      // 相比 resolve(fn(...args)) 代码健壮性更高，如果 fn 函数报错，执行 delay 后能够得到错误信息
+      Promise.resolve(fn(...args))
+        .then(resolve)
+        .catch(reject);
+    }, wait);
+  });
+}
+```
+
+用例：
+
+```js
+async function test() {
+  let data = await delay(str => Promise.resolve(str), 3000, 'hello, world');
+
+  console.log(data);
+}
+
+test();
+```
+
+## 17、LazyMan
+
+problem from: https://bigfrontend.dev/problem/create-lazyman

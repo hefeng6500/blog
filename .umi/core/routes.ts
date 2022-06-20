@@ -1102,7 +1102,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/write.md",
-          "updatedTime": 1655614725000,
+          "updatedTime": 1655719818000,
           "slugs": [
             {
               "depth": 1,
@@ -1171,23 +1171,28 @@ export function getRoutes() {
             },
             {
               "depth": 2,
-              "value": "13、compose",
-              "heading": "13compose"
+              "value": "13、pipe",
+              "heading": "13pipe"
             },
             {
               "depth": 2,
-              "value": "14、sleep",
-              "heading": "14sleep"
+              "value": "14、compose",
+              "heading": "14compose"
             },
             {
               "depth": 2,
-              "value": "15、delay",
-              "heading": "15delay"
+              "value": "15、sleep",
+              "heading": "15sleep"
             },
             {
               "depth": 2,
-              "value": "16、LazyMan",
-              "heading": "16lazyman"
+              "value": "16、delay",
+              "heading": "16delay"
+            },
+            {
+              "depth": 2,
+              "value": "17、LazyMan",
+              "heading": "17lazyman"
             }
           ],
           "title": "JavaScript 高级之手写系列",
