@@ -1102,12 +1102,12 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/write.md",
-          "updatedTime": 1655719818000,
+          "updatedTime": 1655733930000,
           "slugs": [
             {
               "depth": 1,
-              "value": "JavaScript 高级之手写系列",
-              "heading": "javascript-高级之手写系列"
+              "value": "JavaScript 高级之各种手写系列",
+              "heading": "javascript-高级之各种手写系列"
             },
             {
               "depth": 2,
@@ -1195,13 +1195,13 @@ export function getRoutes() {
               "heading": "17lazyman"
             }
           ],
-          "title": "JavaScript 高级之手写系列",
+          "title": "JavaScript 高级之各种手写系列",
           "nav": {
             "path": "/javascript",
             "title": "Javascript"
           }
         },
-        "title": "JavaScript 高级之手写系列 - 高级前端进阶"
+        "title": "JavaScript 高级之各种手写系列 - 高级前端进阶"
       },
       {
         "path": "/learning/2021learning-plan",

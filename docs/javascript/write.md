@@ -1,4 +1,4 @@
-# JavaScript 高级之手写系列
+# JavaScript 高级之各种手写系列
 
 ## 1、forEach
 
@@ -911,6 +911,7 @@ function throttle(fn, options) {
 
     timer = setTimeout(() => {
       fn.call(this, ...args);
+      timer = null;
     }, delay);
   };
 }
@@ -1065,3 +1066,101 @@ test();
 ## 17、LazyMan
 
 problem from: https://bigfrontend.dev/problem/create-lazyman
+
+考察知识点：闭包，事件轮询机制，链式调用，队列
+
+```js
+// interface Laziness {
+//   sleep: (time: number) => Laziness
+//   sleepFirst: (time: number) => Laziness
+//   eat: (food: string) => Laziness
+// }
+
+/**
+ * @param {string} name
+ * @param {(log: string) => void} logFn
+ * @returns {Laziness}
+ */
+function LazyMan(name, logFn) {
+  // your code here
+  return new _LazyMan(name, logFn);
+}
+
+class _LazyMan {
+  constructor(name, logFn) {
+    this.logFn = logFn;
+    this.tasks = [];
+
+    const task = () => {
+      this.logFn(`Hi, I'm ${name}.`);
+      this.next();
+    };
+
+    this.tasks.push(task);
+    setTimeout(() => {
+      this.next();
+    }, 0);
+  }
+
+  next() {
+    const task = this.tasks.shift();
+
+    task && task();
+  }
+
+  eat(food) {
+    const task = () => {
+      this.logFn(`Eat ${food}.`);
+      this.next();
+    };
+
+    this.tasks.push(task);
+
+    return this;
+  }
+
+  sleep(time) {
+    return this.sleepWapper(time);
+  }
+
+  sleepFirst(time) {
+    return this.sleepWapper(time, true);
+  }
+
+  sleepWapper(time, isFirst = false) {
+    const task = () => {
+      const sleep = time => new Promise(resolve => setTimeout(resolve, time));
+
+      sleep(time * 1000).then(() => {
+        this.logFn(
+          `Wake up after ${time} ${time === 1 ? 'second' : 'seconds'}.`,
+        );
+        this.next();
+      });
+    };
+
+    if (isFirst) {
+      this.tasks.unshift(task);
+    } else {
+      this.tasks.push(task);
+    }
+
+    return this;
+  }
+}
+```
+
+用例：
+
+```js
+LazyMan('Jack', console.log)
+  .eat('banana')
+  .sleep(10)
+  .eat('apple')
+  .sleep(1);
+// Hi, I'm Jack.
+// Eat banana.
+// Wake up after 10 seconds.
+// Eat apple.
+// Wake up after 1 seconds.
+```
