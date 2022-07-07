@@ -1102,7 +1102,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/write.md",
-          "updatedTime": 1655733930000,
+          "updatedTime": 1655778649000,
           "slugs": [
             {
               "depth": 1,
@@ -1193,6 +1193,11 @@ export function getRoutes() {
               "depth": 2,
               "value": "17、LazyMan",
               "heading": "17lazyman"
+            },
+            {
+              "depth": 2,
+              "value": "18、深拷贝",
+              "heading": "18深拷贝"
             }
           ],
           "title": "JavaScript 高级之各种手写系列",

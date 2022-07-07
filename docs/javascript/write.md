@@ -1164,3 +1164,79 @@ LazyMan('Jack', console.log)
 // Eat apple.
 // Wake up after 1 seconds.
 ```
+
+## 18、深拷贝
+
+主要考察目标：
+
+- 数据类型校验
+- 循环引用
+
+```js
+function deepClone(data, hash = new WeakMap()) {
+  if (data == undefined) return data;
+  if (typeof data !== 'object') return data;
+  if (data instanceof RegExp) return new RegExp(data);
+  if (data instanceof Date) return new Date(data);
+
+  var v = hash.get(data);
+  if (v) return v;
+
+  var instance = new data.constructor();
+  hash.set(data, instance);
+  for (var key in data) {
+    if (data.hasOwnProperty(key)) {
+      instance[key] = deepClone(data[key], hash);
+    }
+  }
+  return instance;
+}
+
+var a = {
+  name: 'bob',
+  desc: {
+    age: 12,
+  },
+};
+
+var b = deepClone(a);
+b.desc.age = 100;
+console.log(b);
+console.log(a);
+
+// js循环引用
+var t = {};
+t.t = t;
+console.log(deepClone(t));
+```
+
+Vuex 源码的深拷贝
+
+```js
+function find(list, fn) {
+  return list.filter(fn)[0];
+}
+
+function deepCopy(obj, cache = []) {
+  if (obj === null || typeof obj !== 'object') {
+    return obj;
+  }
+
+  const hit = find(cache, v => v.original === obj);
+  if (hit) {
+    return hit.copy;
+  }
+
+  const copy = Array.isArray(obj) ? [] : {};
+
+  cache.push({
+    original: obj,
+    copy,
+  });
+
+  Object.keys(obj).forEach(key => {
+    copy[key] = deepCopy(obj[key], cache);
+  });
+  return copy;
+}
+```
