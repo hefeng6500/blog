@@ -162,7 +162,7 @@ Function.prototype.apply = function(context, argsArray) {
 
 ```js
 Function.prototype.bind = function(context, ...args) {
-  return (...newArgs) => this.apply(context, ...args, ...newArgs);
+  return (...newArgs) => this.apply(context, args.concat(newArgs));
 };
 ```
 

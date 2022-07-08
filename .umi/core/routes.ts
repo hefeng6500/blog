@@ -1102,7 +1102,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/write.md",
-          "updatedTime": 1655778649000,
+          "updatedTime": 1657159265000,
           "slugs": [
             {
               "depth": 1,
