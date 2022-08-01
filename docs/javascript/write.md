@@ -917,6 +917,42 @@ function throttle(fn, options) {
 }
 ```
 
+上述节流代码过为简单，而且首次触发不会执行，我们优化一下：**使得首次触发可以立即执行**
+
+```js
+function throttle(func, wait) {
+  let timer = null;
+  let lastTime = 0;
+
+  return function() {
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+
+    let nowTime = Date.now();
+
+    const remainWaitTime = wait - (nowTime - lastTime);
+
+    if (remainWaitTime <= 0) {
+      func.apply(this, arguments);
+      timer = null;
+      lastTime = Date.now();
+    } else {
+      timer = setTimeout(() => {
+        func.apply(this, arguments);
+        lastTime = Date.now();
+        timer = null;
+      }, remainWaitTime);
+    }
+  };
+}
+```
+
+- **首次触发可以立即执行**
+- `wait` 时间段内多次触发，中间的生成的 `timer` 会被下一次给清除掉，直至 `remainWaitTime` 达到预期才会执行
+- 最后一次点击会在 `remainWaitTime` 时间后执行
+
 ## 11、函数柯里化
 
 **柯里化** 是一种转换，将 `f(a,b,c)` 转换为可以被以 `f(a)(b)(c)` 的形式进行调用。JavaScript 实现通常都保持该函数可以被正常调用，并且如果参数数量不足，则返回**偏函数**。
