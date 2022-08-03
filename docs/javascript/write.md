@@ -919,6 +919,27 @@ function throttle(fn, options) {
 
 上述节流代码过为简单，而且首次触发不会执行，我们优化一下：**使得首次触发可以立即执行**
 
+**方案一：**
+
+```js
+function throttle(func, wait, immediate = true) {
+  var context, args;
+  var previous = 0;
+
+  return function() {
+    var now = +new Date();
+    context = this;
+    args = arguments;
+    if (now - previous > wait) {
+      func.apply(context, args);
+      previous = now;
+    }
+  };
+}
+```
+
+**方案二：**
+
 ```js
 function throttle(func, wait) {
   let timer = null;
