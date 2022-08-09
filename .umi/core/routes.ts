@@ -1086,6 +1086,21 @@ export function getRoutes() {
               "depth": 2,
               "value": "寄生组合继承",
               "heading": "寄生组合继承"
+            },
+            {
+              "depth": 2,
+              "value": "ES6 extends 继承",
+              "heading": "es6-extends-继承"
+            },
+            {
+              "depth": 3,
+              "value": "ES6 继承",
+              "heading": "es6-继承"
+            },
+            {
+              "depth": 3,
+              "value": "ES5 寄生组合式继承",
+              "heading": "es5-寄生组合式继承"
             }
           ],
           "title": "原型、原型链和继承",
@@ -1102,7 +1117,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/write.md",
-          "updatedTime": 1657159265000,
+          "updatedTime": 1659492975000,
           "slugs": [
             {
               "depth": 1,

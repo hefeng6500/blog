@@ -243,3 +243,25 @@ instance2.getTime(); // 2013
 所谓寄生组合式继承，**即通过借用构造函数来继承属性，通过原型链的混成形式来继承方法**。其背后的基本思路是：不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型原型的一个副本而已。本质上，**就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型**。
 
 **寄生组合式继承应该是目前最稳定的继承模式**
+
+## ES6 extends 继承
+
+```js
+class Pet {}
+class Cat extends Pet {}
+
+console.log(Cat.__proto__ === Pet); // true
+console.log(Cat.prototype.__proto__ === Pet.prototype); // true
+```
+
+继承关系图如图所示：
+
+### ES6 继承
+
+**图中绿色线条，构造函数的继承就是 ES6 与 ES5 寄生组合式继承的区别**
+
+![](../assets/class-extends.png)
+
+### ES5 寄生组合式继承
+
+![](../assets/Parasitic-Combination-Inheritance.png)
