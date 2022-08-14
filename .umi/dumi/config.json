@@ -128,6 +128,11 @@
       ],
       "/javascript": [
         {
+          "path": "/javascript/console",
+          "title": "JavaScript 面试题之各种打印",
+          "meta": {}
+        },
+        {
           "path": "/javascript/higher-order function",
           "title": "高阶函数",
           "meta": {}

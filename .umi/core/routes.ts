@@ -958,6 +958,28 @@ export function getRoutes() {
         "title": "面试题 - 高级前端进阶"
       },
       {
+        "path": "/javascript/console",
+        "component": require('D:/workplace/blog/docs/javascript/console.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/javascript/console.md",
+          "updatedTime": 1660483286450,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "JavaScript 面试题之各种打印",
+              "heading": "javascript-面试题之各种打印"
+            }
+          ],
+          "title": "JavaScript 面试题之各种打印",
+          "nav": {
+            "path": "/javascript",
+            "title": "Javascript"
+          }
+        },
+        "title": "JavaScript 面试题之各种打印 - 高级前端进阶"
+      },
+      {
         "path": "/javascript/higher-order function",
         "component": require('D:/workplace/blog/docs/javascript/higher-order function.md').default,
         "exact": true,
@@ -1035,7 +1057,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/prototype.md",
-          "updatedTime": 1606315224000,
+          "updatedTime": 1660013905000,
           "slugs": [
             {
               "depth": 1,
@@ -2008,7 +2030,7 @@ export function getRoutes() {
         "path": "/javascript",
         "meta": {},
         "exact": true,
-        "redirect": "/javascript/higher-order function"
+        "redirect": "/javascript/console"
       },
       {
         "path": "/vue",
