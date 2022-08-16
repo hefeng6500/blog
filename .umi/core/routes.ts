@@ -691,6 +691,50 @@ export function getRoutes() {
         "title": "观察者模式 和 发布-订阅 模式 - 高级前端进阶"
       },
       {
+        "path": "/css/css-trick",
+        "component": require('D:/workplace/blog/docs/css/css-trick.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/css/css-trick.md",
+          "updatedTime": 1660655617207,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "css trick",
+              "heading": "css-trick"
+            }
+          ],
+          "title": "css trick",
+          "nav": {
+            "path": "/css",
+            "title": "Css"
+          }
+        },
+        "title": "css trick - 高级前端进阶"
+      },
+      {
+        "path": "/css",
+        "component": require('D:/workplace/blog/docs/css/index.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/css/index.md",
+          "updatedTime": 1660655479735,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "CSS",
+              "heading": "css"
+            }
+          ],
+          "title": "CSS",
+          "nav": {
+            "path": "/css",
+            "title": "Css"
+          }
+        },
+        "title": "CSS - 高级前端进阶"
+      },
+      {
         "path": "/design-patterns/adapter-mode",
         "component": require('D:/workplace/blog/docs/design-patterns/adapter-mode.md').default,
         "exact": true,
@@ -963,7 +1007,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/javascript/console.md",
-          "updatedTime": 1660483286450,
+          "updatedTime": 1660483316000,
           "slugs": [
             {
               "depth": 1,

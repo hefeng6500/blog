@@ -67,6 +67,18 @@
           "meta": {}
         }
       ],
+      "/css": [
+        {
+          "path": "/css",
+          "title": "CSS",
+          "meta": {}
+        },
+        {
+          "path": "/css/css-trick",
+          "title": "css trick",
+          "meta": {}
+        }
+      ],
       "/design-patterns": [
         {
           "path": "/design-patterns",
@@ -242,6 +254,10 @@
         "title": "博客",
         "order": 1,
         "path": "/articles"
+      },
+      {
+        "path": "/css",
+        "title": "Css"
       },
       {
         "path": "/vue",
